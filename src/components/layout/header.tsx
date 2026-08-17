@@ -16,6 +16,7 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ServicesMegaMenu } from "@/components/layout/services-mega-menu";
 import { Logo } from "@/components/ui/logo";
 import { useCms } from "@/lib/cms/provider";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -251,7 +252,7 @@ export function Header() {
                                       {services
                                         .filter((service) => service.category === category.id)
                                         .map((service) => {
-                                          const Icon = service.icon;
+                                          const Icon = getCmsIcon(service.iconName);
                                           return (
                                             <li key={service.slug}>
                                               <Link

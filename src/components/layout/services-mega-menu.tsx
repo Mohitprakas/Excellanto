@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useCms } from "@/lib/cms/provider";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 interface ServicesMegaMenuProps {
   open: boolean;
@@ -102,7 +103,7 @@ export function ServicesMegaMenu({
                           </p>
                           <ul className="space-y-0.5">
                             {items.map((service) => {
-                              const Icon = service.icon;
+                              const Icon = getCmsIcon(service.iconName);
                               return (
                                 <li key={service.slug}>
                                   <Link

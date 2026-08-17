@@ -3,6 +3,9 @@ import path from "path";
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
+  outputFileTracingExcludes: {
+    "*": ["sanity/**", "sanity/node_modules/**", "sanity/dist/**"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 90, 92],

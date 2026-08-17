@@ -9,7 +9,6 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CTA } from "@/components/sections/cta";
 import { getMobilePageContent } from "@/lib/cms/service-pages";
 import { useCms } from "@/lib/cms/provider";
-import { getCmsIcon } from "@/lib/cms/icons";
 
 export function MobileAppServicePage() {
   const { services, homepage, settings } = useCms();

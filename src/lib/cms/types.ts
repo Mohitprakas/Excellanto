@@ -1,6 +1,5 @@
 import type { SiteImage } from "@/lib/images";
 import type { ServiceCategoryId } from "@/lib/data";
-import type { LucideIcon } from "lucide-react";
 
 export type CmsCta = {
   label: string;
@@ -161,7 +160,6 @@ export type CmsService = {
   description: string;
   megaDescription: string;
   iconName: string;
-  icon: LucideIcon;
   category: ServiceCategoryId;
   featured: boolean;
   sortOrder: number;

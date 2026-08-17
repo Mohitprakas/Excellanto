@@ -1,5 +1,4 @@
 import { sanityFetch } from "@/lib/sanity/client";
-import { getCmsIcon } from "./icons";
 import {
   defaultAbout,
   defaultBlogPage,
@@ -252,7 +251,6 @@ function mapService(raw: Record<string, unknown>, fallback?: CmsService): CmsSer
     description: pickText(raw.description as string, base?.description ?? ""),
     megaDescription: pickText(raw.megaDescription as string, base?.megaDescription ?? ""),
     iconName,
-    icon: getCmsIcon(iconName),
     category,
     featured: typeof raw.featured === "boolean" ? raw.featured : Boolean(base?.featured),
     sortOrder: typeof raw.sortOrder === "number" ? raw.sortOrder : (base?.sortOrder ?? 0),

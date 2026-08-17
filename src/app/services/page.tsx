@@ -7,6 +7,7 @@ import { SectionImage } from "@/components/ui/section-image";
 import { CTA } from "@/components/sections/cta";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { PageHero } from "@/components/ui/page-hero";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 export const revalidate = 60;
 
@@ -48,7 +49,7 @@ export default async function ServicesPage() {
 
                 <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {items.map((service) => {
-                    const Icon = service.icon;
+                    const Icon = getCmsIcon(service.iconName);
                     return (
                       <StaggerItem key={service.slug}>
                         <article className="pro-card group flex h-full flex-col overflow-hidden">

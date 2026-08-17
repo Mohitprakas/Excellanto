@@ -10,6 +10,7 @@ import { CTA } from "@/components/sections/cta";
 import { FadeIn } from "@/components/animations/fade-in";
 import { MobileAppServicePage } from "@/components/sections/mobile-app-service-page";
 import { WebsiteDevServicePage } from "@/components/sections/website-dev-service-page";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -45,7 +46,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     return <WebsiteDevServicePage />;
   }
 
-  const Icon = service.icon;
+  const Icon = getCmsIcon(service.iconName);
 
   return (
     <>

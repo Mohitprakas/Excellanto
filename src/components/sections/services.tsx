@@ -7,6 +7,7 @@ import { SectionImage } from "@/components/ui/section-image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { cn } from "@/lib/utils";
 import { useCms } from "@/lib/cms/provider";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 export function Services() {
   const { homepage, services } = useCms();
@@ -37,7 +38,7 @@ export function Services() {
 
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featuredServices.map((service, index) => {
-            const Icon = service.icon;
+            const Icon = getCmsIcon(service.iconName);
             const featured = index === 0;
             return (
               <StaggerItem

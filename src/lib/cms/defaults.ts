@@ -22,7 +22,6 @@ import {
   processImages,
   sectionImages,
 } from "@/lib/images";
-import { getCmsIcon } from "./icons";
 import type {
   CmsAbout,
   CmsBlogPage,
@@ -30,7 +29,6 @@ import type {
   CmsContact,
   CmsHomepage,
   CmsLegalPage,
-  CmsNavLink,
   CmsService,
   CmsServicesPage,
   CmsSettings,
@@ -113,7 +111,6 @@ export const defaultServices: CmsService[] = services.map((service, index) => {
     description: service.description,
     megaDescription: service.megaDescription,
     iconName,
-    icon: getCmsIcon(iconName),
     category: service.category,
     featured: service.featured,
     sortOrder: index,
