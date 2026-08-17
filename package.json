@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "dev": "node scripts/run-with-node20.cjs next/dist/bin/next dev --turbopack --hostname 127.0.0.1 --port 3456",
     "build": "node scripts/run-with-node20.cjs next/dist/bin/next build",
-    "start": "node scripts/run-with-node20.cjs next/dist/bin/next start --hostname 127.0.0.1 --port 3456",
+    "start": "node scripts/start.cjs",
     "lint": "eslint",
     "studio:dev": "npm --prefix sanity run dev",
-    "studio:deploy": "npm --prefix sanity run deploy"
+    "studio:deploy": "npm --prefix sanity run deploy",
+    "studio:seed": "npm --prefix sanity run seed"
   },
   "dependencies": {
     "@portabletext/react": "^7.0.1",

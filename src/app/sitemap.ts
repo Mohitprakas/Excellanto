@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next";
-import { services, siteConfig } from "@/lib/data";
 import { getAllPublishedBlogs } from "@/lib/sanity/blog-service";
+import { getServices, getSiteSettings } from "@/lib/cms/content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = siteConfig.url;
+  const [settings, services, blogs] = await Promise.all([
+    getSiteSettings(),
+    getServices(),
+    getAllPublishedBlogs(),
+  ]);
+  const base = settings.url;
   const staticRoutes = [
     "",
     "/services",
@@ -27,7 +32,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const blogs = await getAllPublishedBlogs();
   const blogRoutes = blogs.map((b) => ({
     url: `${base}/blog/${b.slug}`,
     lastModified: new Date(),

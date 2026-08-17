@@ -1,11 +1,14 @@
 "use client";
 
-import { capabilities } from "@/lib/data";
-import { getCapabilityImage } from "@/lib/images";
 import { SectionImage } from "@/components/ui/section-image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
+import { getCmsIcon } from "@/lib/cms/icons";
+import { useCms } from "@/lib/cms/provider";
 
 export function Capabilities() {
+  const { homepage } = useCms();
+  const section = homepage.capabilities;
+
   return (
     <section className="bg-white">
       <div className="container-xl section-padding !pb-8">
@@ -13,10 +16,10 @@ export function Capabilities() {
           <div className="flex flex-col gap-3 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Digital Transformation
+                {section.eyebrow}
               </p>
               <h2 className="font-display mt-3 max-w-xl text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                Streamlining Operations Accelerating Outcomes
+                {section.title}
               </h2>
             </div>
           </div>
@@ -24,14 +27,13 @@ export function Capabilities() {
       </div>
 
       <Stagger className="grid sm:grid-cols-2 lg:grid-cols-4">
-        {capabilities.map((item, index) => {
-          const Icon = item.icon;
-          const image = getCapabilityImage(item.title);
+        {section.items.map((item, index) => {
+          const Icon = getCmsIcon(item.iconName);
           return (
             <StaggerItem key={item.title}>
               <article className="group relative min-h-[280px] overflow-hidden border-t border-border sm:border-l sm:first:border-l-0 lg:min-h-[340px]">
                 <SectionImage
-                  {...image}
+                  {...item.image}
                   className="absolute inset-0"
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   imgClassName="transition-transform duration-700 group-hover:scale-[1.05]"

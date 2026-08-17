@@ -246,11 +246,26 @@ body {
 }
 
 .hero-dashboard-frame {
-  transform: perspective(1400px) rotateX(10deg) translateY(0);
   transform-origin: center top;
   box-shadow:
     0 -30px 80px rgba(37, 99, 235, 0.28),
     0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.hero-dashboard-3d {
+  transform-style: preserve-3d;
+  transform-origin: center top;
+  animation: hero-dashboard-float 7s ease-in-out infinite;
+}
+
+@keyframes hero-dashboard-float {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(12deg) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(9deg) translateZ(18px);
+  }
 }
 
 @keyframes hero-arc-pulse {
@@ -675,7 +690,8 @@ body {
   .hero-ai-chip,
   .hero-it-hub,
   .hero-it-rack,
-  .hero-glow-arc {
+  .hero-glow-arc,
+  .hero-dashboard-3d {
     animation: none;
   }
 

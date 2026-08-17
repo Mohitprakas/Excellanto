@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import { ContactClient } from "./contact-client";
+import { getContactPage, getSiteSettings } from "@/lib/cms/content";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Get AI automation solutions for your business. Contact Excellanto at support@excellanto.com or +91 96677 97078. 191-192 Neelkanth Plaza, East of Kailash, New Delhi.",
-};
+export const revalidate = 60;
 
-export default function ContactPage() {
-  return <ContactClient />;
+export async function generateMetadata(): Promise<Metadata> {
+  const [contact, settings] = await Promise.all([getContactPage(), getSiteSettings()]);
+  return {
+    title: contact.seoTitle || contact.eyebrow,
+    description:
+      contact.seoDescription ||
+      `${contact.title}. Contact ${settings.name} at ${settings.email} or ${settings.phone}. ${settings.address}`,
+  };
+}
+
+export default async function ContactPage() {
+  const contact = await getContactPage();
+  return <ContactClient page={contact} />;
 }

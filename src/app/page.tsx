@@ -7,6 +7,7 @@ import { Brands } from "@/components/sections/brands";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { BlogPreview } from "@/components/sections/blog-preview";
 import { CTA } from "@/components/sections/cta";
+import { Testimonials } from "@/components/sections/testimonials";
 import { getLatestBlogs } from "@/lib/sanity/blog-service";
 
 export const revalidate = 60;
@@ -23,6 +24,7 @@ export default async function HomePage() {
       <Process />
       <Brands />
       <WhyChooseUs />
+      <Testimonials />
       <BlogPreview posts={latestBlogs} />
       <CTA />
     </>

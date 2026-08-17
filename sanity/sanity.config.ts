@@ -2,6 +2,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemas";
+import { structure } from "./structure";
 
 const projectId =
   process.env.SANITY_STUDIO_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -15,9 +16,25 @@ export default defineConfig({
   title: "Excellanto CMS",
   projectId: projectId ?? "",
   dataset,
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool({ structure }), visionTool()],
   schema: {
     types: schemaTypes,
+  },
+  document: {
+    newDocumentOptions: (prev, { creationContext }) => {
+      const singletons = [
+        "siteSettings",
+        "homepage",
+        "aboutPage",
+        "contactPage",
+        "servicesPage",
+        "blogPage",
+      ];
+      if (creationContext.type === "global") {
+        return prev.filter((template) => !singletons.includes(template.templateId));
+      }
+      return prev;
+    },
   },
   vite: {
     envDir: "..",

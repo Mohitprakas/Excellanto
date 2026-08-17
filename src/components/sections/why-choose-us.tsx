@@ -2,11 +2,14 @@
 
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { SectionImage } from "@/components/ui/section-image";
-import { whyChooseUs, whyChooseCardsIntro } from "@/lib/data";
-import { sectionImages } from "@/lib/images";
 import { MagneticButton } from "@/components/ui/magnetic-button";
+import { getCmsIcon } from "@/lib/cms/icons";
+import { useCms } from "@/lib/cms/provider";
 
 export function WhyChooseUs() {
+  const { homepage } = useCms();
+  const why = homepage.why;
+
   return (
     <section className="section-padding bg-white">
       <div className="container-xl">
@@ -15,32 +18,32 @@ export function WhyChooseUs() {
             <div className="sticky top-28">
               <div className="ui-accent-bar mb-6" />
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {whyChooseCardsIntro.eyebrow}
+                {why.eyebrow}
               </p>
               <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                {whyChooseCardsIntro.title}
+                {why.title}
               </h2>
               <p className="mt-5 text-sm leading-7 text-muted md:text-base">
-                {whyChooseCardsIntro.body}
+                {why.body}
               </p>
               <div className="mt-8 overflow-hidden">
                 <SectionImage
-                  {...sectionImages.whyChooseUs}
+                  {...why.image}
                   className="aspect-[4/3]"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
               </div>
               <div className="mt-8">
-                <MagneticButton href="/contact" strength={0.1}>
-                  Contact Us
+                <MagneticButton href={why.cta.href} strength={0.1}>
+                  {why.cta.label}
                 </MagneticButton>
               </div>
             </div>
           </FadeIn>
 
           <Stagger className="space-y-0">
-            {whyChooseUs.map((item, i) => {
-              const Icon = item.icon;
+            {why.cards.map((item, i) => {
+              const Icon = getCmsIcon(item.iconName);
               return (
                 <StaggerItem key={item.title}>
                   <div className="group grid gap-4 border-t border-border py-7 md:grid-cols-[4.5rem_1fr] md:gap-6">

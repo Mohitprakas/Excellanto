@@ -5,12 +5,15 @@ import { ArrowUpRight, Calendar } from "lucide-react";
 import type { BlogPost } from "@/lib/sanity/types";
 import { SectionImage } from "@/components/ui/section-image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
+import { useCms } from "@/lib/cms/provider";
 
 interface BlogPreviewProps {
   posts: BlogPost[];
 }
 
 export function BlogPreview({ posts }: BlogPreviewProps) {
+  const { homepage } = useCms();
+  const copy = homepage.blogPreview;
   const [featured, ...rest] = posts;
 
   if (!featured) return null;
@@ -22,17 +25,17 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
           <div className="mb-10 flex flex-col gap-3 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Our Blog
+                {copy.eyebrow}
               </p>
               <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                Latest News & Articles From the Blog
+                {copy.title}
               </h2>
             </div>
             <Link
               href="/blog"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
             >
-              Explore More
+              {copy.linkLabel}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -67,7 +70,7 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
                   href={`/blog/${featured.slug}`}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                 >
-                  Explore More
+                  {copy.linkLabel}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -99,7 +102,7 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
                       href={`/blog/${post.slug}`}
                       className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary"
                     >
-                      Explore More
+                      {copy.linkLabel}
                       <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>

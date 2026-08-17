@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { FadeIn } from "@/components/animations/fade-in";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SectionImage } from "@/components/ui/section-image";
-import { heroCopy, siteConfig } from "@/lib/data";
+import { useCms } from "@/lib/cms/provider";
 import { sectionImages, type SiteImage } from "@/lib/images";
 
 interface PageHeroProps {
@@ -31,6 +31,7 @@ export function PageHero({
   showCtas = true,
   imageUnoptimized = false,
 }: PageHeroProps) {
+  const { settings } = useCms();
   if (variant === "banner") {
     const bannerImage = image ?? sectionImages.hero;
 
@@ -56,7 +57,7 @@ export function PageHero({
           <div className="max-w-2xl">
             <FadeIn>
               <p className="font-display text-4xl font-bold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
-                {siteConfig.name}
+                {settings.name}
               </p>
             </FadeIn>
 
@@ -89,21 +90,17 @@ export function PageHero({
               <FadeIn delay={0.26}>
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                   <MagneticButton
-                    href="/contact"
-                    size="lg"
-                    strength={0.12}
+                    href={settings.primaryCta.href}
                     className="!bg-white !text-secondary hover:!bg-white/90"
                   >
-                    {heroCopy.primaryCta}
+                    {settings.primaryCta.label}
                     <ArrowUpRight className="h-4 w-4" />
                   </MagneticButton>
                   <MagneticButton
-                    href="/contact"
-                    size="lg"
-                    strength={0.1}
+                    href={settings.secondaryCta.href}
                     className="!border-white/30 !bg-transparent !text-white hover:!bg-white/10"
                   >
-                    {heroCopy.secondaryCta}
+                    {settings.secondaryCta.label}
                   </MagneticButton>
                 </div>
               </FadeIn>

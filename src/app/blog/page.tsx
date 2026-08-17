@@ -2,36 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Calendar } from "lucide-react";
 import { getAllPublishedBlogs } from "@/lib/sanity/blog-service";
-import { sectionImages } from "@/lib/images";
+import { getBlogPage } from "@/lib/cms/content";
 import { PageHero } from "@/components/ui/page-hero";
 import { SectionImage } from "@/components/ui/section-image";
 import { CTA } from "@/components/sections/cta";
 import { Stagger, StaggerItem } from "@/components/animations/fade-in";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Latest News & Articles From the Blog",
-};
-
 export const revalidate = 60;
 
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getBlogPage();
+  return {
+    title: page.seoTitle || page.eyebrow,
+    description: page.seoDescription || page.title,
+  };
+}
+
 export default async function BlogPage() {
-  const blogs = await getAllPublishedBlogs();
+  const [blogs, page] = await Promise.all([getAllPublishedBlogs(), getBlogPage()]);
 
   return (
     <>
-      <PageHero
-        eyebrow="Our Blog"
-        title="Latest News & Articles From the Blog"
-        image={sectionImages.blogHero}
-      />
+      <PageHero eyebrow={page.eyebrow} title={page.title} image={page.heroImage} />
 
       <section className="section-padding bg-surface">
         <div className="container-xl">
           {blogs.length === 0 ? (
-            <p className="text-center text-sm leading-7 text-muted">
-              No blog articles are available right now. Please check back soon.
-            </p>
+            <p className="text-center text-sm leading-7 text-muted">{page.emptyMessage}</p>
           ) : (
             <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {blogs.map((post) => (
@@ -56,14 +53,12 @@ export default async function BlogPage() {
                       <h2 className="font-display text-base font-bold leading-snug tracking-tight text-secondary group-hover:text-primary">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </h2>
-                      <p className="mt-2 flex-1 text-sm leading-6 text-muted">
-                        {post.excerpt}
-                      </p>
+                      <p className="mt-2 flex-1 text-sm leading-6 text-muted">{post.excerpt}</p>
                       <Link
                         href={`/blog/${post.slug}`}
                         className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                       >
-                        Read more
+                        {page.readMoreLabel}
                         <ArrowUpRight className="h-4 w-4" />
                       </Link>
                     </div>

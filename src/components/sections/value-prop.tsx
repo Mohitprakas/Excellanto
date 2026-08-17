@@ -3,10 +3,12 @@
 import { FadeIn } from "@/components/animations/fade-in";
 import { SectionImage } from "@/components/ui/section-image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { valueProp } from "@/lib/data";
-import { sectionImages } from "@/lib/images";
+import { useCms } from "@/lib/cms/provider";
 
 export function ValueProp() {
+  const { homepage } = useCms();
+  const valueProp = homepage.valueProp;
+
   return (
     <section className="section-padding bg-surface">
       <div className="container-xl grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
@@ -22,8 +24,8 @@ export function ValueProp() {
             {valueProp.body}
           </p>
           <div className="mt-8">
-            <MagneticButton href="/contact" strength={0.1}>
-              Contact Us
+            <MagneticButton href={valueProp.cta.href} strength={0.1}>
+              {valueProp.cta.label}
             </MagneticButton>
           </div>
         </FadeIn>
@@ -32,7 +34,7 @@ export function ValueProp() {
             <div className="absolute -bottom-4 -left-4 right-8 top-8 border border-primary/20 bg-primary/5" />
             <div className="relative overflow-hidden">
               <SectionImage
-                {...sectionImages.valueProp}
+                {...valueProp.image}
                 className="aspect-[5/4]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />

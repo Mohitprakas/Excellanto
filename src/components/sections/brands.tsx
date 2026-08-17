@@ -1,15 +1,17 @@
 "use client";
 
 import { FadeIn } from "@/components/animations/fade-in";
-import { brandLogos, sectionImages } from "@/lib/images";
-import { brandsHeading } from "@/lib/data";
 import { SectionImage } from "@/components/ui/section-image";
+import { useCms } from "@/lib/cms/provider";
 
 export function Brands() {
+  const { homepage } = useCms();
+  const brands = homepage.brands;
+
   return (
     <section className="relative overflow-hidden bg-secondary py-16 md:py-20">
       <SectionImage
-        {...sectionImages.brands}
+        {...brands.background}
         className="absolute inset-0 opacity-25"
         sizes="100vw"
         overlay
@@ -18,13 +20,13 @@ export function Brands() {
       <div className="container-xl relative">
         <FadeIn>
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-            Brands
+            {brands.eyebrow}
           </p>
           <h2 className="font-display mt-3 max-w-xl text-3xl font-bold tracking-tight text-white md:text-4xl">
-            {brandsHeading}
+            {brands.title}
           </h2>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            {brandLogos.map((logo) => (
+            {brands.logos.map((logo) => (
               <div
                 key={logo.src}
                 className="flex h-14 items-center border border-white/15 bg-white/5 px-5 backdrop-blur-sm"

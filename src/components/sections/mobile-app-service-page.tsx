@@ -7,17 +7,21 @@ import { PageHero } from "@/components/ui/page-hero";
 import { SectionImage } from "@/components/ui/section-image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CTA } from "@/components/sections/cta";
-import { industries, mobileAppPage } from "@/lib/data";
-import { brandLogos, mobileAppImages } from "@/lib/images";
+import { getMobilePageContent } from "@/lib/cms/service-pages";
+import { useCms } from "@/lib/cms/provider";
+import { getCmsIcon } from "@/lib/cms/icons";
 
 export function MobileAppServicePage() {
+  const { services, homepage, settings } = useCms();
+  const service = services.find((item) => item.slug === "mobile-app-development");
+  const page = getMobilePageContent(service);
   return (
     <>
       <PageHero
         variant="banner"
-        eyebrow="Mobile App Development"
-        title={mobileAppPage.heroTitle}
-        image={mobileAppImages.hero}
+        eyebrow={page.heroEyebrow}
+        title={page.heroTitle}
+        image={page.heroImage}
       />
 
       <section className="section-padding bg-white">
@@ -28,12 +32,12 @@ export function MobileAppServicePage() {
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Services
+              {service?.backLabel || settings.backToServices}
             </Link>
           </FadeIn>
 
           <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {mobileAppPage.whyChoose.map((item, index) => (
+            {page.whyChoose.map((item, index) => (
               <StaggerItem
                 key={item.title}
                 className={index === 0 ? "md:col-span-2 lg:col-span-1" : undefined}
@@ -57,19 +61,19 @@ export function MobileAppServicePage() {
         <div className="container-xl">
           <FadeIn>
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-              {mobileAppPage.processEyebrow}
+              {page.processEyebrow}
             </p>
             <h2 className="font-display mt-3 max-w-3xl text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-              {mobileAppPage.processTitle}
+              {page.processTitle}
             </h2>
             <p className="mt-5 max-w-3xl text-sm leading-7 text-muted md:text-base">
-              {mobileAppPage.processIntro}
+              {page.processIntro}
             </p>
           </FadeIn>
 
           <Stagger className="mt-12 space-y-0">
-            {mobileAppPage.processSteps.map((step, index) => {
-              const image = mobileAppImages.process[index];
+            {page.processSteps.map((step, index) => {
+              const image = step.image;
               const reverse = index % 2 === 1;
               return (
                 <StaggerItem key={step.step}>
@@ -106,7 +110,7 @@ export function MobileAppServicePage() {
 
       <section className="relative overflow-hidden bg-secondary py-16 md:py-20">
         <SectionImage
-          {...mobileAppImages.brandsVisual}
+          {...page.brandsVisual}
           className="absolute inset-0 opacity-20"
           sizes="100vw"
           overlay
@@ -115,10 +119,10 @@ export function MobileAppServicePage() {
         <div className="container-xl relative">
           <FadeIn>
             <h2 className="font-display max-w-xl text-3xl font-bold tracking-tight text-white md:text-4xl">
-              {mobileAppPage.brandsTitle}
+              {page.brandsTitle}
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              {brandLogos.map((logo) => (
+              {(homepage.brands.logos.length ? homepage.brands.logos : page.brandLogos).map((logo) => (
                 <div
                   key={logo.src}
                   className="flex h-14 items-center border border-white/15 bg-white/5 px-5"
@@ -140,23 +144,23 @@ export function MobileAppServicePage() {
         <div className="container-xl grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <FadeIn direction="left">
             <SectionImage
-              {...mobileAppImages.industries}
+              {...page.industriesImage}
               className="aspect-[4/3] w-full"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </FadeIn>
           <FadeIn direction="right">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-              {mobileAppPage.industriesEyebrow}
+              {page.industriesEyebrow}
             </p>
             <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-              {mobileAppPage.industriesTitle}
+              {page.industriesTitle}
             </h2>
             <p className="mt-5 text-sm leading-7 text-muted md:text-base">
-              {mobileAppPage.industriesIntro}
+              {page.industriesIntro}
             </p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {industries.map((ind) => {
+              {page.industries.map((ind) => {
                 const Icon = ind.icon;
                 return (
                   <li
@@ -172,8 +176,8 @@ export function MobileAppServicePage() {
               })}
             </ul>
             <div className="mt-8">
-              <MagneticButton href="/contact" strength={0.12}>
-                Let’s Talk
+              <MagneticButton href={service?.pageCta.href || "/contact"} strength={0.12}>
+                {service?.pageCta.label || settings.headerCta.label}
               </MagneticButton>
             </div>
           </FadeIn>

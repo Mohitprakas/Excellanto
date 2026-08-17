@@ -1,5 +1,6 @@
 import type { PortableTextBlock } from "@portabletext/react";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+type SanityImageSource = unknown;
 
 export type SanityBlogListItem = {
   _id: string;

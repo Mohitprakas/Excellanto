@@ -1,52 +1,39 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { PageHero } from "@/components/ui/page-hero";
 import { FadeIn } from "@/components/animations/fade-in";
-import { siteConfig } from "@/lib/data";
+import { BlogPortableText } from "@/components/blog/portable-text";
+import { getLegalPage } from "@/lib/cms/content";
+import type { PortableTextBlock } from "@portabletext/react";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy for Excellanto Ventures.",
-};
+export const revalidate = 60;
 
-export default function PrivacyPolicyPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getLegalPage("privacy-policy");
+  if (!page) return { title: "Privacy Policy" };
+  return {
+    title: page.seoTitle || page.title,
+    description: page.seoDescription || page.description,
+  };
+}
+
+export default async function PrivacyPolicyPage() {
+  const page = await getLegalPage("privacy-policy");
+  if (!page) notFound();
+
   return (
     <>
       <PageHero
-        eyebrow="Legal"
-        title="Privacy Policy"
-        description="How Excellanto Ventures collects, uses, and protects your information."
+        eyebrow={page.eyebrow}
+        title={page.title}
+        description={page.description}
       />
       <section className="section-padding bg-white">
         <div className="container-xl max-w-3xl space-y-6">
           <FadeIn>
-            <p className="text-base leading-relaxed text-muted">
-              Excellanto Ventures (&quot;{siteConfig.name}&quot;) respects your privacy. This
-              policy explains what information we collect when you use our website or contact
-              us, and how we use it to deliver IT solutions, digital marketing, and related
-              services.
-            </p>
-            <h2 className="font-display mt-8 text-xl font-bold text-secondary">
-              Information we collect
-            </h2>
-            <p className="mt-3 text-base leading-relaxed text-muted">
-              When you submit a contact form or reach out by phone or email, we may collect
-              your name, email address, phone number, company details, and message content.
-            </p>
-            <h2 className="font-display mt-8 text-xl font-bold text-secondary">
-              How we use information
-            </h2>
-            <p className="mt-3 text-base leading-relaxed text-muted">
-              We use your information to respond to inquiries, provide proposals, improve our
-              services, and communicate about projects. We do not sell your personal data.
-            </p>
-            <h2 className="font-display mt-8 text-xl font-bold text-secondary">Contact</h2>
-            <p className="mt-3 text-base leading-relaxed text-muted">
-              For privacy questions, email{" "}
-              <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary">
-                {siteConfig.email}
-              </a>{" "}
-              or call {siteConfig.phone}.
-            </p>
+            {page.content?.length ? (
+              <BlogPortableText value={page.content as PortableTextBlock[]} />
+            ) : null}
           </FadeIn>
         </div>
       </section>

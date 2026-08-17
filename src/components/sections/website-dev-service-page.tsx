@@ -18,8 +18,8 @@ import { PageHero } from "@/components/ui/page-hero";
 import { SectionImage } from "@/components/ui/section-image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CTA } from "@/components/sections/cta";
-import { websiteDevPage } from "@/lib/data";
-import { websiteDevImages } from "@/lib/images";
+import { getWebsitePageContent } from "@/lib/cms/service-pages";
+import { useCms } from "@/lib/cms/provider";
 import { cn } from "@/lib/utils";
 
 const hqImage = { unoptimized: true, quality: 92 } as const;
@@ -27,19 +27,22 @@ const hqImage = { unoptimized: true, quality: 92 } as const;
 const offeringIcons = [Layout, Code2, Database, Plug, Palette];
 
 export function WebsiteDevServicePage() {
+  const { services, settings } = useCms();
+  const service = services.find((item) => item.slug === "website-development");
+  const page = getWebsitePageContent(service);
   const [activeOffering, setActiveOffering] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [hoveredHighlight, setHoveredHighlight] = useState<number | null>(null);
 
-  const activeProcessImage = websiteDevImages.process[activeStep];
+  const activeProcessImage = page.processSteps[activeStep]?.image;
 
   return (
     <>
       <PageHero
         variant="banner"
-        eyebrow="Website Development"
-        title={websiteDevPage.heroTitle}
-        image={websiteDevImages.hero}
+        eyebrow={page.heroEyebrow}
+        title={page.heroTitle}
+        image={page.heroImage}
         imageUnoptimized
       />
 
@@ -52,16 +55,16 @@ export function WebsiteDevServicePage() {
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Services
+              {service?.backLabel || settings.backToServices}
             </Link>
             <h2 className="font-display text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-              {websiteDevPage.offeringsTitle}
+              {page.offeringsTitle}
             </h2>
           </FadeIn>
 
           <div className="mt-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
             <Stagger className="grid gap-3 sm:grid-cols-2">
-              {websiteDevPage.offerings.map((item, index) => {
+              {page.offerings.map((item, index) => {
                 const Icon = offeringIcons[index] ?? Layout;
                 const active = activeOffering === index;
                 return (
@@ -142,8 +145,7 @@ export function WebsiteDevServicePage() {
                   className="absolute inset-0 overflow-hidden border border-border"
                 >
                   <SectionImage
-                    {...(websiteDevImages.offerings[activeOffering] ??
-                      websiteDevImages.hero)}
+                    {...(page.offerings[activeOffering]?.image ?? page.heroImage)}
                     {...hqImage}
                     className="h-full w-full"
                     sizes="40vw"
@@ -155,10 +157,10 @@ export function WebsiteDevServicePage() {
                       0{activeOffering + 1}
                     </p>
                     <p className="font-display mt-2 text-xl font-bold text-white">
-                      {websiteDevPage.offerings[activeOffering]?.title}
+                      {page.offerings[activeOffering]?.title}
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-300">
-                      {websiteDevPage.offerings[activeOffering]?.body}
+                      {page.offerings[activeOffering]?.body}
                     </p>
                   </div>
                 </motion.div>
@@ -173,12 +175,12 @@ export function WebsiteDevServicePage() {
         <div className="container-xl">
           <FadeIn>
             <h2 className="font-display max-w-3xl text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-              {websiteDevPage.whyChooseTitle}
+              {page.whyChooseTitle}
             </h2>
           </FadeIn>
 
           <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {websiteDevPage.whyChoose.map((item, index) => (
+            {page.whyChoose.map((item, index) => (
               <StaggerItem key={item.title}>
                 <motion.article
                   className="group relative h-full overflow-hidden border border-border bg-white p-6"
@@ -214,7 +216,7 @@ export function WebsiteDevServicePage() {
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
             <div className="relative space-y-2">
               <div className="absolute bottom-4 left-[1.35rem] top-4 w-px bg-border" aria-hidden />
-              {websiteDevPage.processSteps.map((step, index) => {
+              {page.processSteps.map((step, index) => {
                 const active = activeStep === index;
                 return (
                   <motion.button
@@ -286,14 +288,14 @@ export function WebsiteDevServicePage() {
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-                        Step {websiteDevPage.processSteps[activeStep]?.step}
+                        Step {page.processSteps[activeStep]?.step}
                       </p>
                       <p className="font-display mt-1 text-2xl font-bold text-white">
-                        {websiteDevPage.processSteps[activeStep]?.title}
+                        {page.processSteps[activeStep]?.title}
                       </p>
                     </div>
                     <div className="flex gap-1.5">
-                      {websiteDevPage.processSteps.map((_, i) => (
+                      {page.processSteps.map((_, i) => (
                         <button
                           key={i}
                           type="button"
@@ -324,7 +326,7 @@ export function WebsiteDevServicePage() {
               transition={{ type: "spring", stiffness: 260, damping: 24 }}
             >
               <SectionImage
-                {...websiteDevImages.redesign}
+                {...page.redesignImage}
                 {...hqImage}
                 className="aspect-[4/3] w-full"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -334,13 +336,13 @@ export function WebsiteDevServicePage() {
           </FadeIn>
           <FadeIn direction="right">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-              {websiteDevPage.redesignEyebrow}
+              {page.redesignEyebrow}
             </p>
             <h2 className="font-display mt-3 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-              {websiteDevPage.redesignTitle}
+              {page.redesignTitle}
             </h2>
             <ul className="mt-8 space-y-3">
-              {websiteDevPage.redesignItems.map((item, index) => (
+              {page.redesignItems.map((item, index) => (
                 <motion.li
                   key={item}
                   initial={{ opacity: 0, x: 24 }}
@@ -369,7 +371,7 @@ export function WebsiteDevServicePage() {
         <div className="container-xl grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <FadeIn direction="left">
             <div className="grid gap-4 sm:grid-cols-2">
-              {websiteDevPage.highlights.map((item, index) => {
+              {page.highlights.map((item, index) => {
                 const active = hoveredHighlight === index;
                 return (
                   <motion.div
@@ -410,8 +412,8 @@ export function WebsiteDevServicePage() {
               })}
             </div>
             <div className="mt-8">
-              <MagneticButton href="/contact" strength={0.14} size="lg">
-                {websiteDevPage.discoverMore}
+              <MagneticButton href={service?.pageCta.href || "/contact"} strength={0.14} size="lg">
+                {page.discoverMore}
                 <ArrowUpRight className="h-4 w-4" />
               </MagneticButton>
             </div>
@@ -425,7 +427,7 @@ export function WebsiteDevServicePage() {
               transition={{ type: "spring", stiffness: 220, damping: 22 }}
             >
               <SectionImage
-                {...websiteDevImages.highlights}
+                {...page.highlightsImage}
                 {...hqImage}
                 className="aspect-[4/3] w-full"
                 sizes="(max-width: 1024px) 100vw, 50vw"

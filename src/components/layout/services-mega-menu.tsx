@@ -3,12 +3,8 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  serviceCategories,
-  getServicesByCategory,
-  siteConfig,
-} from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { useCms } from "@/lib/cms/provider";
 
 interface ServicesMegaMenuProps {
   open: boolean;
@@ -23,6 +19,10 @@ export function ServicesMegaMenu({
   onOpen,
   light = false,
 }: ServicesMegaMenuProps) {
+  const { settings, services, categories, homepage } = useCms();
+  const servicesLabel =
+    settings.navLinks.find((link) => link.mega)?.label || settings.footerServicesTitle;
+
   return (
     <div
       className="relative"
@@ -45,7 +45,7 @@ export function ServicesMegaMenu({
         aria-haspopup="true"
         onFocus={onOpen}
       >
-        Services
+        {servicesLabel}
         <motion.svg
           width="12"
           height="12"
@@ -88,13 +88,13 @@ export function ServicesMegaMenu({
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-x-0 top-[4.25rem] z-50 hidden px-4 lg:block"
               role="menu"
-              aria-label="Services mega menu"
+              aria-label={settings.megaMenuAria}
             >
               <div className="mx-auto max-w-[1160px] overflow-hidden rounded-2xl border border-border bg-white/97 shadow-float backdrop-blur-xl">
                 <div className="grid lg:grid-cols-[1fr_220px]">
                   <div className="grid gap-0 p-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-1 xl:p-6">
-                    {serviceCategories.map((category) => {
-                      const items = getServicesByCategory(category.id);
+                    {categories.map((category) => {
+                      const items = services.filter((s) => s.category === category.id);
                       return (
                         <div key={category.id} className="px-2 py-2">
                           <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
@@ -132,7 +132,7 @@ export function ServicesMegaMenu({
                   <aside className="relative overflow-hidden border-t border-border bg-secondary p-6 text-white lg:border-l lg:border-t-0">
                     <div className="relative flex h-full flex-col">
                       <h3 className="font-display text-base font-bold leading-snug tracking-tight">
-                        Get AI Automation Solutions for Your Business
+                        {homepage.cta.title}
                       </h3>
                       <div className="mt-auto space-y-3 pt-8">
                         <Link
@@ -140,22 +140,22 @@ export function ServicesMegaMenu({
                           onClick={onClose}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-white"
                         >
-                          View More
+                          {settings.viewMore}
                           <ArrowRight className="h-4 w-4" />
                         </Link>
                         <Link
-                          href="/contact"
+                          href={settings.headerCta.href}
                           onClick={onClose}
                           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-secondary transition-colors hover:bg-white/95"
                         >
-                          Let&apos;s Talk
+                          {settings.headerCta.label}
                           <ArrowUpRight className="h-4 w-4" />
                         </Link>
                         <a
-                          href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                          href={`tel:${settings.phone.replace(/\s/g, "")}`}
                           className="block text-center text-xs text-slate-400 hover:text-white"
                         >
-                          {siteConfig.phone}
+                          {settings.phone}
                         </a>
                       </div>
                     </div>

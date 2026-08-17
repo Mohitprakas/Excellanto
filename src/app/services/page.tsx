@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import {
-  services,
-  serviceCategories,
-  getServicesByCategory,
-  servicesPageCopy,
-} from "@/lib/data";
-import { getServiceImage, sectionImages } from "@/lib/images";
+import { getServices, getServicesPage } from "@/lib/cms/content";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SectionImage } from "@/components/ui/section-image";
 import { CTA } from "@/components/sections/cta";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { PageHero } from "@/components/ui/page-hero";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: servicesPageCopy.title,
-};
+export const revalidate = 60;
 
-export default function ServicesPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getServicesPage();
+  return {
+    title: page.seoTitle || page.eyebrow,
+    description: page.seoDescription || page.title,
+  };
+}
+
+export default async function ServicesPage() {
+  const [page, services] = await Promise.all([getServicesPage(), getServices()]);
+
   return (
     <>
       <PageHero
         variant="banner"
-        eyebrow="Services"
-        title={servicesPageCopy.title}
-        image={sectionImages.servicesHero}
+        eyebrow={page.eyebrow}
+        title={page.title}
+        image={page.heroImage}
       />
 
       <section className="section-padding bg-surface">
         <div className="container-xl space-y-16">
-          {serviceCategories.map((category, catIndex) => {
-            const items = getServicesByCategory(category.id);
+          {page.categories.map((category, catIndex) => {
+            const items = services.filter((s) => s.category === category.id);
             if (!items.length) return null;
             return (
               <div key={category.id}>
                 <FadeIn>
                   <SectionHeading
                     align="left"
-                    eyebrow="Services"
+                    eyebrow={page.categoryEyebrow}
                     title={category.title}
                     className="mb-8 max-w-2xl"
                   />
@@ -48,12 +49,11 @@ export default function ServicesPage() {
                 <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {items.map((service) => {
                     const Icon = service.icon;
-                    const image = getServiceImage(service.slug);
                     return (
                       <StaggerItem key={service.slug}>
                         <article className="pro-card group flex h-full flex-col overflow-hidden">
                           <SectionImage
-                            {...image}
+                            {...service.image}
                             className="aspect-[16/10]"
                             sizes="(max-width: 768px) 100vw, 33vw"
                             imgClassName="transition-transform duration-500 group-hover:scale-[1.03]"
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                               href={`/services/${service.slug}`}
                               className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                             >
-                              View More
+                              {service.cardLinkLabel || page.cardLinkLabel}
                               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </Link>
                           </div>

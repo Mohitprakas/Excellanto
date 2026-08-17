@@ -2,10 +2,12 @@
   "name": "excellanto-sanity-studio",
   "private": true,
   "scripts": {
-    "dev": "sanity dev",
-    "deploy": "sanity deploy"
+    "dev": "node run-cli.cjs dev",
+    "deploy": "node run-cli.cjs deploy -y",
+    "seed": "node scripts/seed-cms.mjs"
   },
   "dependencies": {
+    "@sanity/client": "^7.26.2",
     "@sanity/vision": "3.76.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

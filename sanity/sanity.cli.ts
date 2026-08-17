@@ -10,4 +10,5 @@ export default defineCliConfig({
       process.env.NEXT_PUBLIC_SANITY_DATASET ||
       "production",
   },
+  studioHost: "excellanto",
 });

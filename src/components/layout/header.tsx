@@ -11,16 +11,11 @@ import {
   Phone,
   ChevronDown,
 } from "lucide-react";
-import {
-  navLinks,
-  siteConfig,
-  serviceCategories,
-  getServicesByCategory,
-} from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ServicesMegaMenu } from "@/components/layout/services-mega-menu";
 import { Logo } from "@/components/ui/logo";
+import { useCms } from "@/lib/cms/provider";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,6 +48,8 @@ export function Header() {
     };
   }, [open]);
 
+  const { settings, services, categories } = useCms();
+  const navLinks = settings.navLinks;
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
 
@@ -67,9 +64,9 @@ export function Header() {
         )}
       >
         <div className="container-xl flex h-16 items-center justify-between md:h-[4.25rem]">
-          <Logo dark={!transparent} height={34} priority />
+          <Logo dark={!transparent} height={34} priority src={settings.logo?.src} alt={settings.logo?.alt} ariaLabel={settings.logoAriaLabel} />
 
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label={settings.primaryNavAria}>
             {navLinks.map((link) => {
               if ("mega" in link && link.mega) {
                 return (
@@ -118,7 +115,7 @@ export function Header() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a
-              href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+              href={`tel:${settings.phone.replace(/\s/g, "")}`}
               className={cn(
                 "flex items-center gap-2 text-[13px] font-bold transition-colors",
                 transparent
@@ -127,10 +124,10 @@ export function Header() {
               )}
             >
               <Phone className="h-3.5 w-3.5" />
-              {siteConfig.phone}
+              {settings.phone}
             </a>
             <MagneticButton
-              href="/contact"
+              href={settings.headerCta.href}
               size="sm"
               strength={0.15}
               className={cn(
@@ -138,7 +135,7 @@ export function Header() {
                   "!bg-white !text-secondary hover:!bg-white/90 shadow-none"
               )}
             >
-              Let&apos;s Talk
+              {settings.headerCta.label}
               <ArrowUpRight className="h-3.5 w-3.5" />
             </MagneticButton>
           </div>
@@ -152,7 +149,7 @@ export function Header() {
                 : "border-border bg-white text-secondary"
             )}
             onClick={() => setOpen(true)}
-            aria-label="Open menu"
+            aria-label={settings.openMenu}
             aria-expanded={open}
           >
             <Menu className="h-5 w-5" />
@@ -191,15 +188,15 @@ export function Header() {
               animate={{ clipPath: "circle(150% at calc(100% - 2.5rem) 2.5rem)" }}
               exit={{ clipPath: "circle(0% at calc(100% - 2.5rem) 2.5rem)" }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              aria-label="Mobile"
+              aria-label={settings.mobileNavAria}
             >
               <div className="container-xl flex h-16 shrink-0 items-center justify-between">
-                <Logo height={32} href={false} />
+                <Logo height={32} href={false} src={settings.logo?.src} alt={settings.logo?.alt} />
                 <button
                   type="button"
                   className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5"
                   onClick={() => setOpen(false)}
-                  aria-label="Close menu"
+                  aria-label={settings.closeMenu}
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -226,7 +223,7 @@ export function Header() {
                           onClick={() => setMobileServicesOpen((v) => !v)}
                           aria-expanded={mobileServicesOpen}
                         >
-                          Services
+                          {link.label}
                           <ChevronDown
                             className={cn(
                               "h-6 w-6 transition-transform",
@@ -245,14 +242,15 @@ export function Header() {
                               className="overflow-hidden"
                             >
                               <div className="mb-4 space-y-5 rounded-3xl border border-white/10 bg-white/5 p-4">
-                                {serviceCategories.map((category) => (
+                                {categories.map((category) => (
                                   <div key={category.id}>
                                     <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
                                       {category.title}
                                     </p>
                                     <ul className="space-y-1">
-                                      {getServicesByCategory(category.id).map(
-                                        (service) => {
+                                      {services
+                                        .filter((service) => service.category === category.id)
+                                        .map((service) => {
                                           const Icon = service.icon;
                                           return (
                                             <li key={service.slug}>
@@ -266,8 +264,7 @@ export function Header() {
                                               </Link>
                                             </li>
                                           );
-                                        }
-                                      )}
+                                        })}
                                     </ul>
                                   </div>
                                 ))}
@@ -276,7 +273,7 @@ export function Header() {
                                   className="inline-flex items-center gap-1.5 pt-1 text-sm font-bold text-accent"
                                   onClick={() => setOpen(false)}
                                 >
-                                  View all services
+                                  {settings.viewAllServices}
                                   <ArrowUpRight className="h-4 w-4" />
                                 </Link>
                               </div>
@@ -311,8 +308,8 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <MagneticButton href="/contact" size="lg">
-                    Let&apos;s Talk
+                  <MagneticButton href={settings.headerCta.href} size="lg">
+                    {settings.headerCta.label}
                     <ArrowUpRight className="h-5 w-5" />
                   </MagneticButton>
                 </motion.div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { BlogPortableText } from "@/components/blog/portable-text";
 import { getBlogBySlug, getPublishedBlogSlugs } from "@/lib/sanity/blog-service";
+import { getBlogPage } from "@/lib/cms/content";
 import { PageHero } from "@/components/ui/page-hero";
 import { SectionImage } from "@/components/ui/section-image";
 import { CTA } from "@/components/sections/cta";
@@ -22,8 +23,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getBlogBySlug(slug);
-  if (!post) return { title: "Article" };
+  const [post, page] = await Promise.all([getBlogBySlug(slug), getBlogPage()]);
+  if (!post) return { title: page.articleFallbackTitle };
 
   return {
     title: post.seoTitle || post.title,
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getBlogBySlug(slug);
+  const [post, page] = await Promise.all([getBlogBySlug(slug), getBlogPage()]);
   if (!post) notFound();
 
   return (
@@ -58,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
               className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to Blog
+              {page.backToBlog}
             </Link>
             <div className="relative mb-8 overflow-hidden rounded-2xl border border-border">
               <SectionImage
@@ -72,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
                 <Calendar className="h-4 w-4" />
                 {post.date}
               </span>
-              {post.author ? <span>By {post.author}</span> : null}
+              {post.author ? <span>{page.byPrefix} {post.author}</span> : null}
             </div>
             {post.content?.length ? (
               <BlogPortableText value={post.content} />

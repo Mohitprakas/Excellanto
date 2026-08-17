@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { featuredServices, servicesPageCopy } from "@/lib/data";
-import { getServiceImage } from "@/lib/images";
 import { SectionImage } from "@/components/ui/section-image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { cn } from "@/lib/utils";
+import { useCms } from "@/lib/cms/provider";
 
 export function Services() {
+  const { homepage, services } = useCms();
+  const copy = homepage.services;
+  const featuredServices = services.filter((s) => s.featured);
+
   return (
     <section className="section-padding bg-white" id="services">
       <div className="container-xl">
@@ -19,15 +22,15 @@ export function Services() {
               <div className="flex items-center gap-3">
                 <span className="ui-accent-bar" />
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                  our capabilities
+                  {copy.eyebrow}
                 </p>
               </div>
               <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                Want to see our professional Services
+                {copy.title}
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-6 text-muted md:pb-1 md:text-right">
-              Click here to View More
+              {copy.aside}
             </p>
           </div>
         </FadeIn>
@@ -35,7 +38,6 @@ export function Services() {
         <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featuredServices.map((service, index) => {
             const Icon = service.icon;
-            const image = getServiceImage(service.slug);
             const featured = index === 0;
             return (
               <StaggerItem
@@ -51,7 +53,7 @@ export function Services() {
                   )}
                 >
                   <SectionImage
-                    {...image}
+                    {...service.image}
                     className="absolute inset-0"
                     sizes={
                       featured
@@ -90,7 +92,7 @@ export function Services() {
                       href={`/services/${service.slug}`}
                       className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-white"
                     >
-                      View More
+                      {service.cardLinkLabel || copy.cardLink}
                       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                   </div>
@@ -102,10 +104,10 @@ export function Services() {
 
         <FadeIn delay={0.1} className="mt-10 text-center md:text-left">
           <Link
-            href="/services"
+            href={copy.viewMoreHref}
             className="inline-flex items-center gap-2 border-b border-secondary pb-1 text-sm font-bold text-secondary transition-colors hover:border-primary hover:text-primary"
           >
-            {servicesPageCopy.viewMore}
+            {copy.viewMore}
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </FadeIn>

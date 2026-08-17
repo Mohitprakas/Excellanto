@@ -15,11 +15,12 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/animations/fade-in";
 import { SectionImage } from "@/components/ui/section-image";
-import { siteConfig } from "@/lib/data";
-import { sectionImages } from "@/lib/images";
+import { useCms } from "@/lib/cms/provider";
+import type { CmsContact } from "@/lib/cms/types";
 import { cn } from "@/lib/utils";
 
-export function ContactClient() {
+export function ContactClient({ page }: { page: CmsContact }) {
+  const { settings } = useCms();
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
 
@@ -31,9 +32,9 @@ export function ContactClient() {
   return (
     <>
       <PageHero
-        eyebrow="Contact Us"
-        title="Get AI Automation Solutions for Your Business"
-        image={sectionImages.contactHero}
+        eyebrow={page.eyebrow}
+        title={page.title}
+        image={page.heroImage}
       />
 
       <section className="relative overflow-hidden section-padding">
@@ -42,16 +43,16 @@ export function ContactClient() {
           <FadeIn direction="left">
             <div className="relative overflow-hidden">
               <SectionImage
-                {...sectionImages.contactOffice}
+                {...page.officeImage}
                 className="aspect-[16/11] w-full"
                 sizes="(max-width: 1024px) 100vw, 45vw"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0b1220]/90 via-[#0b1220]/45 to-transparent p-6 pt-16">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-                  Contact Info
+                  {page.infoEyebrow}
                 </p>
                 <p className="font-display mt-2 text-xl font-bold text-white">
-                  Get AI Automation Solutions for Your Business
+                  {page.infoTitle}
                 </p>
               </div>
             </div>
@@ -60,21 +61,21 @@ export function ContactClient() {
               {[
                 {
                   icon: MapPin,
-                  label: "Office Address",
-                  value: siteConfig.address,
+                  label: page.addressLabel,
+                  value: settings.address,
                   href: undefined as string | undefined,
                 },
                 {
                   icon: Phone,
-                  label: "Phone Number",
-                  value: `${siteConfig.phone}  ·  ${siteConfig.phoneSecondary}`,
-                  href: `tel:${siteConfig.phone.replace(/\s/g, "")}`,
+                  label: page.phoneLabel,
+                  value: `${settings.phone}  ·  ${settings.phoneSecondary}`,
+                  href: `tel:${settings.phone.replace(/\s/g, "")}`,
                 },
                 {
                   icon: Mail,
-                  label: "Mail Address",
-                  value: `${siteConfig.email}  ·  ${siteConfig.emailSecondary}`,
-                  href: `mailto:${siteConfig.email}`,
+                  label: page.emailLabel,
+                  value: `${settings.email}  ·  ${settings.emailSecondary}`,
+                  href: `mailto:${settings.email}`,
                 },
               ].map((item) => (
                 <a
@@ -116,10 +117,10 @@ export function ContactClient() {
                   </span>
                   <div>
                     <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                      Contact Us
+                      {page.formEyebrow}
                     </p>
                     <h2 className="font-display mt-1.5 text-2xl font-bold tracking-tight text-secondary md:text-3xl">
-                      Comment or Message
+                      {page.formTitle}
                     </h2>
                   </div>
                 </div>
@@ -142,17 +143,17 @@ export function ContactClient() {
                         <CheckCircle2 className="h-8 w-8" />
                       </motion.div>
                       <h3 className="font-display text-2xl font-bold tracking-tight text-secondary">
-                        Submit
+                        {page.successTitle}
                       </h3>
                       <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
-                        Comment or Message
+                        {page.successBody}
                       </p>
                       <button
                         type="button"
                         onClick={() => setSubmitted(false)}
                         className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-dark"
                       >
-                        Comment or Message
+                        {page.successResetLabel}
                         <ArrowUpRight className="h-4 w-4" />
                       </button>
                     </motion.div>
@@ -168,7 +169,7 @@ export function ContactClient() {
                     >
                       <div className="grid gap-5 sm:grid-cols-2">
                         <Field
-                          label="First"
+                          label={page.firstNameLabel}
                           id="first"
                           required
                           focused={focused === "first"}
@@ -176,7 +177,7 @@ export function ContactClient() {
                           onBlur={() => setFocused(null)}
                         />
                         <Field
-                          label="Last"
+                          label={page.lastNameLabel}
                           id="last"
                           required
                           focused={focused === "last"}
@@ -185,7 +186,7 @@ export function ContactClient() {
                         />
                       </div>
                       <Field
-                        label="Email"
+                        label={page.emailFieldLabel}
                         id="email"
                         type="email"
                         required
@@ -198,7 +199,7 @@ export function ContactClient() {
                           htmlFor="message"
                           className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.12em] text-muted"
                         >
-                          Comment or Message
+                          {page.messageLabel}
                         </label>
                         <div
                           className={cn(
@@ -224,7 +225,7 @@ export function ContactClient() {
                       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-end">
                         <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
                           <Button type="submit" size="lg" className="min-w-[10.5rem]">
-                            Submit
+                            {page.submitLabel}
                             <Send className="h-4 w-4" />
                           </Button>
                         </motion.div>
