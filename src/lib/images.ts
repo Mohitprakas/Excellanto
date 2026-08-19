@@ -13,8 +13,8 @@ const e = (path: string) =>
 
 export const sectionImages = {
   hero: {
-    src: "/images/ai/homepage-hero.png",
-    alt: "AI Powered IT Solutions & Staffing",
+    src: "/images/homepage-banner.png",
+    alt: "AI Powered IT Solutions & Staffing — modern office overlooking city skyline",
   },
   heroSecondary: {
     src: e("2026/03/medium-shot-men-working-together-office-2.jpg"),
@@ -247,6 +247,115 @@ export const websiteDevImages = {
   highlights: {
     src: e("2026/03/social-media-marketing-concept-marketing-with-applications-1.jpg"),
     alt: "Security-first, Responsive, Cross-browser, Fast Performance",
+  },
+} as const;
+
+export const socialMediaImages = {
+  hero: {
+    src: e("2026/03/apps-workplace-social-media-holding-profession.jpg"),
+    alt: "Social media intelligence dashboard and professional workspace",
+  },
+  intelligenceHub: {
+    src: e("2026/03/social-media-marketing-concept-marketing-with-applications-1.jpg"),
+    alt: "Social applications and marketing intelligence concept",
+  },
+  audience: {
+    src: e("2026/02/AI-meeting_50.png"),
+    alt: "AI-powered audience analytics and team collaboration",
+  },
+  contentStrategy: {
+    src: e("2026/05/Digital-Marketing.jpeg"),
+    alt: "Data-driven digital marketing and content strategy",
+  },
+  realtime: {
+    src: e("2026/03/woman-interacting-with-futuristic-holographic-interface-1.jpg"),
+    alt: "Real-time social intelligence and live data monitoring",
+  },
+  competitive: {
+    src: e("2026/03/cheerful-team-engineers-using-laptop-server-farm-analyzing-data-1.jpg"),
+    alt: "Competitive analytics and market intelligence",
+  },
+  process: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "Strategic planning for social media intelligence",
+  },
+  impact: {
+    src: e("2026/03/group-industry-experts-engineers-analyzing-solar-panel-systems-1-1.jpg"),
+    alt: "Cross-functional business impact from social insights",
+  },
+  idealFor: {
+    src: e("2026/03/medium-shot-men-working-together-office-2.jpg"),
+    alt: "Teams leveraging social media intelligence",
+  },
+} as const;
+
+export const seoCognitionImages = {
+  hero: {
+    src: e(
+      "2026/03/gHTQKKoosjK5crf_RyXzH7yvSAB6XUsz2SmGn_RECriO-kAXpt1tMtJjc2qUKIyDmRlY-tq2tqx7emdSCucueyMuPyQHPy-reIgiD6u-GZhJrgYEx15hZOgaPW5NwwFaPM2mJgtv0X2XC-U50ZZ_J-amINUAK3XZGmUBcBh4JgENz0Um80YH5w9MhCWEt7VJ.jpg"
+    ),
+    alt: "SEO Cognition — advanced search engine optimization analytics",
+  },
+  strategy: {
+    src: e("2026/03/young-employees-sitting-office-table-using-laptop-2-1.jpg"),
+    alt: "SEO team optimizing search performance",
+  },
+  keywords: {
+    src: e("2026/05/SEO-services.jpeg"),
+    alt: "Keyword intelligence and SEO research",
+  },
+  onPage: {
+    src: e("2024/05/ch4-img-1.webp"),
+    alt: "On-page SEO optimization and content structure",
+  },
+  technical: {
+    src: e("2024/05/ch4-img-2.webp"),
+    alt: "Technical SEO and website foundation",
+  },
+  content: {
+    src: e("2024/05/ch1-img-2.webp"),
+    alt: "SEO content strategy and authority building",
+  },
+  accent: {
+    src: e("2024/05/bg-il-2.webp"),
+    alt: "Structured SEO growth framework",
+  },
+} as const;
+
+export const staffingRecruitmentImages = {
+  hero: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "Strategic staffing and recruitment planning",
+  },
+  approach: {
+    src: e("2024/05/feh-n3-img-1.webp"),
+    alt: "Focused hiring approach and candidate evaluation",
+  },
+  expertise: {
+    src: e("2026/03/medium-shot-men-working-together-office.jpg"),
+    alt: "Technology professionals collaborating in office",
+  },
+  process: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "Structured hiring process workflow",
+  },
+  segments: [
+    {
+      src: e("2024/05/ch4-img-1.webp"),
+      alt: "Startup team building foundational talent",
+    },
+    {
+      src: e("2024/05/ch4-img-2.webp"),
+      alt: "Growing company scaling quality teams",
+    },
+    {
+      src: e("2024/05/ch4-img-3.webp"),
+      alt: "Enterprise specialized hiring solutions",
+    },
+  ],
+  impact: {
+    src: e("2026/03/medium-shot-men-working-together-office.jpg"),
+    alt: "Long-term value from better hiring decisions",
   },
 } as const;
 

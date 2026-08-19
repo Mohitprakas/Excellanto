@@ -20,6 +20,27 @@ export function resolveCmsImage(
   };
 }
 
+const LEGACY_HERO_IMAGE_PREFIXES = ["/images/ai/", "hero-dashboard-preview"];
+
+export function resolveHeroBanner(
+  raw: Record<string, unknown>,
+  fallback: SiteImage
+): SiteImage {
+  if (raw.heroBannerImage) {
+    return resolveCmsImage(raw.heroBannerImage as CmsImageValue, fallback);
+  }
+
+  const legacy = raw.heroDashboardImage as CmsImageValue;
+  const legacyUrl = legacy?.url || "";
+  const usesLegacyAsset = LEGACY_HERO_IMAGE_PREFIXES.some((prefix) => legacyUrl.includes(prefix));
+
+  if (legacy && !usesLegacyAsset) {
+    return resolveCmsImage(legacy, fallback);
+  }
+
+  return fallback;
+}
+
 export function pickText(value: string | null | undefined, fallback: string): string {
   const trimmed = value?.trim();
   return trimmed ? trimmed : fallback;

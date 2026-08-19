@@ -226,55 +226,54 @@ export const services: Service[] = [
     title: "Social Media Intelligence",
     shortTitle: "Social Media Intelligence",
     description:
-      "Analyze audience behavior, engagement patterns, and brand sentiment across social platforms using AI-powered insights. Transform social data into actionable strategies that improve brand visibility, strengthen customer engagement, and drive measurable marketing growth.",
-    megaDescription: "Audience insights & brand sentiment",
+      "At Excellanto, we transform social media activity into actionable intelligence that drives business decisions, strengthens brand positioning, and delivers measurable growth.",
+    megaDescription: "Social media intelligence & analytics",
     icon: Share2,
     category: "marketing",
     featured: true,
     features: [
-      "Audience behavior analysis",
-      "Engagement pattern insights",
-      "Brand sentiment monitoring",
-      "Actionable growth strategies",
+      "Identify what content drives real engagement",
+      "Track how users interact with your brand",
+      "Discover hidden opportunities for growth",
+      "Align social media efforts with business goals",
     ],
     detailIntro:
-      "Analyze audience behavior, engagement patterns, and brand sentiment across social platforms using AI-powered insights.",
+      "Social media platforms are constantly generating valuable data. Excellanto applies AI-driven analytics, behavioral tracking, and predictive insights to convert this data into strategies that improve engagement, optimize campaigns, and accelerate business outcomes.",
   },
   {
     slug: "seo-cognition",
     title: "SEO Cognition",
     shortTitle: "SEO Cognition",
     description:
-      "Use AI-driven SEO intelligence to uncover high-value keywords, improve technical SEO, and optimize website visibility. Our data-driven strategies help businesses stay ahead of search algorithm changes and achieve sustainable organic search growth.",
-    megaDescription: "AI-driven SEO intelligence",
+      "At Excellanto, we deliver advanced Search Engine Optimization services designed to position your business at the top of search results, attract high-intent traffic, and convert visibility into measurable growth.",
+    megaDescription: "AI-driven SEO & organic growth",
     icon: Search,
     category: "marketing",
     featured: true,
     features: [
-      "Keyword intelligence",
-      "On-page SEO",
-      "Technical SEO",
-      "Content strategy",
+      "Achieve higher rankings for competitive keywords",
+      "Attract targeted users actively searching for your services",
+      "Generate qualified organic leads consistently",
+      "Strengthen brand authority in your industry",
     ],
     detailIntro:
-      "Search engine optimization today requires more than keyword placement. It demands a strategic approach that aligns with user intent, search engine algorithms, and business goals. Excellanto delivers SEO services that are structured, data-driven, and focused on real performance.",
+      "Our expert SEO team works as an extension of your business—analyzing, optimizing, and refining every element of your website to ensure it performs effectively across search engines.",
   },
   {
     slug: "staffing-recruitment-service",
     title: "Staffing Recruitment Service",
     shortTitle: "Staffing Recruitment Service",
     description:
-      "Strategic Staffing & Recruitment Solutions. Building the right team is no longer a routine hiring activity—it is a business-critical function that directly impacts growth, delivery capability, and long-term success.",
+      "Building the right team is no longer a routine hiring activity—it is a business-critical function that directly impacts growth, delivery capability, and long-term success.",
     megaDescription: "Strategic staffing & recruitment",
     icon: UserCheck,
     category: "talent",
     featured: false,
     features: [
-      "Requirement mapping",
-      "Targeted sourcing",
-      "Interview coordination",
-      "Offer management",
-      "Post-placement transition support",
+      "Stronger and more capable teams",
+      "Reduced employee turnover",
+      "Faster project execution",
+      "Improved overall performance",
     ],
     detailIntro:
       "At Excellanto, we approach staffing and recruitment as a strategic business solution, not a transactional service. We work closely with organizations to understand how talent fits into their larger vision, and then we design hiring strategies that deliver not just candidates, but the right people who can create measurable impact.",
@@ -546,6 +545,368 @@ export const websiteDevPage = {
     "Fast Performance",
   ],
   discoverMore: "Discover More",
+};
+
+/** Content from excellanto.com/social-media-intelligence/ */
+export const socialMediaIntelligencePage = {
+  heroTitle: "Social Media Intelligence",
+  intro: [
+    "At Excellanto, we transform social media activity into actionable intelligence that drives business decisions, strengthens brand positioning, and delivers measurable growth. Our Social Media Intelligence solutions are built for organizations that want more than engagement—they want clarity, control, and consistent performance from their digital presence.",
+    "Social media platforms are constantly generating valuable data. However, without structured analysis and intelligent systems, this data remains underutilized. Excellanto applies AI-driven analytics, behavioral tracking, and predictive insights to convert this data into strategies that improve engagement, optimize campaigns, and accelerate business outcomes.",
+  ],
+  chooseUs: {
+    eyebrow: "choose us",
+    title: "Turning everyday operations into intelligent, automated systems",
+    body: "Traditional automation focuses only on repetitive tasks, but modern businesses require much more than that. Our AI-driven approach ensures that your operations are not only automated but also capable of learning, adapting, and improving over time.",
+    bullets: [
+      "Identify what content drives real engagement",
+      "Track how users interact with your brand",
+      "Discover hidden opportunities for growth",
+      "Align social media efforts with business goals",
+    ],
+    result:
+      "As a result, your social media presence becomes a data-backed growth engine, not just a communication channel.",
+  },
+  audience: {
+    eyebrow: "Deep audience understanding that improves targeting and engagement",
+    body: "Understanding your audience is the foundation of successful marketing. Excellanto analyzes user behavior to provide detailed audience insights that improve targeting accuracy and campaign effectiveness.",
+    leadIn: "We help you understand:",
+    bullets: [
+      "Audience demographics and preferences",
+      "Content consumption patterns",
+      "Engagement behavior across platforms",
+      "User intent and buying signals",
+    ],
+    result:
+      "With these insights, your campaigns are more focused, relevant, and capable of generating higher engagement and conversions.",
+  },
+  featureSections: [
+    {
+      title: "Strengthening your brand through data-driven content strategy",
+      intro:
+        "Content plays a critical role in social media success. However, creating content without insights often leads to inconsistent results. Excellanto ensures that your content strategy is guided by real data.",
+      bullets: [
+        "Create content that aligns with audience interests",
+        "Identify high-performing formats and themes",
+        "Improve engagement through targeted messaging",
+        "Maintain consistency across platforms",
+        "Build stronger brand identity and trust",
+      ],
+      result:
+        "This results in content that not only attracts attention but also drives meaningful interactions and conversions.",
+    },
+    {
+      title: "Real-time intelligence that keeps you ahead of competition",
+      intro:
+        "Social media trends change rapidly. Businesses that react late often miss valuable opportunities. Excellanto’s real-time intelligence systems ensure that you stay ahead.",
+      bullets: [
+        "Monitor conversations and trends as they happen",
+        "Identify viral opportunities early",
+        "Respond quickly to audience feedback",
+        "Adjust campaigns instantly for better performance",
+      ],
+      result:
+        "This proactive approach helps your brand remain relevant, competitive, and responsive.",
+    },
+    {
+      title: "Competitive insights that strengthen your market position",
+      intro:
+        "Understanding your competitors is essential for building a strong market presence. Excellanto provides detailed competitor intelligence to help you stay ahead.",
+      bullets: [
+        "Competitor content strategies",
+        "Engagement patterns and audience response",
+        "Campaign performance trends",
+        "Market positioning and messaging",
+      ],
+      result:
+        "With this information, you can refine your strategy and create a distinct and competitive advantage.",
+    },
+  ],
+  process: {
+    eyebrow: "A clear and structured approach that ensures results",
+    title: "A structured approach that ensures consistent results",
+    intro: "Excellanto follows a systematic process to deliver reliable and scalable outcomes.",
+    steps: [
+      {
+        step: "01",
+        title: "Understanding your business objectives",
+        body: "We align social media intelligence with your business goals and growth targets.",
+      },
+      {
+        step: "02",
+        title: "Collecting and organizing data",
+        body: "Data is gathered from multiple platforms to ensure comprehensive analysis.",
+      },
+      {
+        step: "03",
+        title: "Analyzing patterns and behavior",
+        body: "We identify trends, insights, and opportunities within the data.",
+      },
+      {
+        step: "04",
+        title: "Implementing insight-driven strategies",
+        body: "Strategies are executed based on data-backed recommendations.",
+      },
+      {
+        step: "05",
+        title: "Continuous optimization and reporting",
+        body: "Performance is monitored and improved continuously for better results.",
+      },
+    ],
+  },
+  impact: {
+    title: "Driving measurable impact across key business areas",
+    intro:
+      "Excellanto’s Social Media Intelligence solutions deliver value across multiple business functions:",
+    bullets: [
+      "Marketing: Improve campaign performance and ROI",
+      "Sales: Identify high-intent users and generate leads",
+      "Customer Experience: Understand feedback and improve satisfaction",
+      "Brand Management: Strengthen reputation and visibility",
+      "Strategy: Make informed business decisions with real data",
+    ],
+    result:
+      "This integrated impact ensures that social media contributes directly to overall business growth.",
+  },
+  idealFor: {
+    eyebrow: "why choose us",
+    title: "Designed for businesses that demand performance and clarity",
+    intro: "Our Social Media Intelligence solutions are ideal for:",
+    bullets: [
+      "Growing brands seeking better engagement",
+      "Businesses focused on lead generation through social platforms",
+      "Companies looking to improve ROI from social media marketing",
+      "Organizations wanting deeper audience insights",
+    ],
+    result:
+      "Each solution is customized to ensure alignment with your specific business model and objectives.",
+  },
+  cta: {
+    title: "Let’s turn your social data into real business value",
+    body: "If you want to move beyond basic social media management and leverage data for smarter growth, Excellanto is ready to deliver.",
+    closingTitle:
+      "Partner with Excellanto to build intelligent, insight-driven social media strategies that drive engagement, conversions, and sustainable growth.",
+    tagline: "Make smarter decisions with Social Media Intelligence",
+    subtext:
+      "Work with Excellanto to unlock the full potential of your social media and turn insights into measurable business outcomes.",
+  },
+};
+
+/** Content from excellanto.com/seo-cognition/ */
+export const seoCognitionPage = {
+  heroTitle: "SEO Cognition",
+  intro: [
+    "At Excellanto, we deliver advanced Search Engine Optimization services designed to position your business at the top of search results, attract high-intent traffic, and convert visibility into measurable growth. As a performance-driven SEO company, our focus is on building a strong, scalable organic presence that continuously generates leads, strengthens authority, and supports long-term business success.",
+    "Our expert SEO team works as an extension of your business—analyzing, optimizing, and refining every element of your website to ensure it performs effectively across search engines. From technical SEO to content strategy and ongoing SEO marketing, we create a complete system that delivers consistent and sustainable results.",
+  ],
+  approach: {
+    eyebrow: "A structured SEO approach built for measurable outcomes",
+    title:
+      "Search engine optimization today requires more than keyword placement. It demands a strategic approach that aligns with user intent, search engine algorithms, and business goals. Excellanto delivers SEO services that are structured, data-driven, and focused on real performance.",
+    leadIn: "With our SEO optimization services, your business can:",
+    bullets: [
+      "Achieve higher rankings for competitive keywords",
+      "Attract targeted users actively searching for your services",
+      "Generate qualified organic leads consistently",
+      "Strengthen brand authority in your industry",
+    ],
+    result:
+      "This ensures that your SEO efforts contribute directly to revenue growth and long-term digital success.",
+  },
+  keywords: {
+    eyebrow: "why choose us",
+    title: "Keyword intelligence that drives targeted traffic",
+    body: "Keywords are the foundation of any successful SEO strategy. Excellanto focuses on identifying keywords that not only drive traffic but also generate conversions.",
+    leadIn: "Our keyword research services include:",
+    bullets: [
+      "Identifying high-intent search terms",
+      "Mapping keywords to specific pages",
+      "Discovering long-tail keyword opportunities",
+      "Aligning keywords with business objectives",
+    ],
+  },
+  pillars: [
+    {
+      title: "On-page SEO that improves visibility and engagement",
+      intro:
+        "On-page SEO is essential for ensuring that your website content is optimized for both search engines and users. Excellanto focuses on enhancing every element of your web pages to maximize performance.",
+      leadIn: "Our on-page SEO services include:",
+      bullets: [
+        "Optimizing titles, meta descriptions, and headings",
+        "Improving content structure and readability",
+        "Enhancing internal linking strategies",
+        "Optimizing images and multimedia elements",
+        "Ensuring proper keyword placement",
+      ],
+      result:
+        "This ensures that search engines can easily access and understand your website, leading to better rankings and performance.",
+    },
+    {
+      title: "Technical SEO that strengthens your website foundation",
+      intro:
+        "A strong technical foundation is critical for SEO success. Excellanto ensures that your website meets all technical requirements for optimal performance.",
+      leadIn: "",
+      bullets: [] as string[],
+      result:
+        "Excellanto ensures that your website meets all technical requirements for optimal performance—so search engines can crawl, index, and rank your site with confidence.",
+    },
+    {
+      title: "Content strategy that builds authority and trust",
+      intro:
+        "Content plays a key role in SEO marketing. Excellanto develops content strategies that are designed to rank well and engage users effectively.",
+      leadIn: "Our SEO content services include:",
+      bullets: [
+        "Creating keyword-optimized service pages",
+        "Developing high-quality informational content",
+        "Updating and improving existing content",
+        "Aligning content with user search intent",
+        "Building topical authority in your niche",
+      ],
+      result:
+        "This ensures your website becomes a trusted source of information, improving both rankings and conversions.",
+    },
+  ],
+  cta: {
+    title: "Ready to rank at the top of search results?",
+    body: "Partner with Excellanto to build a scalable organic presence that generates qualified leads and strengthens your brand authority.",
+    closingTitle:
+      "Let our SEO team analyze, optimize, and refine every element of your website for sustainable search performance.",
+    tagline: "Performance-driven SEO Cognition",
+    subtext:
+      "From keyword intelligence to technical SEO and content strategy—we deliver a complete system for measurable organic growth.",
+  },
+};
+
+/** Content from excellanto.com/staffing-recruitment-service/ */
+export const staffingRecruitmentPage = {
+  heroTitle: "Strategic Staffing & Recruitment Solutions",
+  intro: [
+    "Building the right team is no longer a routine hiring activity—it is a business-critical function that directly impacts growth, delivery capability, and long-term success.",
+    "At Excellanto, we approach staffing and recruitment as a strategic business solution, not a transactional service. We work closely with organizations to understand how talent fits into their larger vision, and then we design hiring strategies that deliver not just candidates, but the right people who can create measurable impact.",
+    "We don't believe in volume-based recruitment. Instead, we focus on precision, alignment, and long-term value. Every hiring requirement is treated with a clear objective—to identify professionals who not only meet technical expectations but also integrate seamlessly into your business environment.",
+  ],
+  principles: [
+    {
+      label: "Precision",
+      body: "No volume-based recruitment—every requirement is treated with a clear objective.",
+    },
+    {
+      label: "Alignment",
+      body: "Professionals who meet technical expectations and integrate into your environment.",
+    },
+    {
+      label: "Long-term value",
+      body: "The right people who create measurable impact, not just fill positions.",
+    },
+  ],
+  approach: {
+    eyebrow: "A focused hiring approach built on clarity and precision",
+    paragraphs: [
+      "Our recruitment process is structured, but it is not rigid. It is designed to adapt to your specific hiring needs while maintaining consistency in quality.",
+      "We start with a detailed understanding of your requirement. This includes not only technical skills but also role expectations, team dynamics, and growth potential. Based on this, we identify the right talent pool using targeted sourcing methods.",
+      "Each candidate goes through a thorough evaluation process. We assess their technical capabilities, communication skills, experience relevance, and overall suitability for your organization. We also ensure that candidates are genuinely interested and aligned with the opportunity before presenting them.",
+    ],
+    result:
+      "This approach ensures that when you receive a profile, it is already filtered, evaluated, and aligned, saving your time and effort.",
+  },
+  expertise: {
+    eyebrow: "Expertise across critical and high-demand technology domains",
+    intro:
+      "We specialize in hiring for roles that are essential for modern businesses, especially in areas where talent demand is high and availability is limited.",
+    domains: [
+      {
+        title: "Enterprise Platforms",
+        body: "In enterprise platforms, we work with professionals experienced in SAP across modules such as FICO, MM, SD, HCM, and S/4HANA. We also support hiring for Oracle environments, including EBS, Fusion, and cloud-based systems. For organizations working with ServiceNow and MuleSoft, we identify professionals who bring both technical depth and practical implementation experience.",
+      },
+      {
+        title: "Cloud & Infrastructure",
+        body: "When it comes to cloud and infrastructure, we help businesses build strong teams with expertise in AWS and Azure. This includes professionals skilled in cloud architecture, DevOps, migration strategies, and enterprise integrations.",
+      },
+      {
+        title: "Software Development",
+        body: "In software development, we focus on delivering developers who can build scalable and efficient systems. This includes Java (Spring Boot) developers for enterprise applications and .NET professionals for full-stack development. We also support hiring for modern application architectures and microservices environments.",
+      },
+      {
+        title: "DevOps & Automation",
+        body: "For DevOps and automation, we identify professionals who can streamline development and deployment processes. This includes expertise in CI/CD pipelines, containerization tools like Docker and Kubernetes, and infrastructure automation.",
+      },
+    ],
+  },
+  process: {
+    title: "A hiring process designed to reduce effort and improve results",
+    intro:
+      "Recruitment often becomes time-consuming when there is no structure. We solve this by following a process that is clear, efficient, and focused on outcomes.",
+    steps: [
+      {
+        title: "Requirement mapping",
+        body: "We begin with requirement mapping, where we clearly define what success looks like for the role.",
+      },
+      {
+        title: "Targeted sourcing",
+        body: "This is followed by targeted sourcing, where we identify candidates who match both technical and business expectations.",
+      },
+      {
+        title: "Outreach & screening",
+        body: "Once candidates are identified, we initiate outreach and conduct initial screenings. This ensures that only relevant and interested candidates move forward.",
+      },
+      {
+        title: "Interview coordination",
+        body: "We manage the entire interview coordination process, making it easier for your team to focus on evaluation rather than logistics.",
+      },
+      {
+        title: "Offer management",
+        body: "After selection, we assist with offer management and ensure smooth onboarding.",
+      },
+      {
+        title: "Post-placement support",
+        body: "Our involvement does not end with placement—we stay engaged to ensure that the transition is successful.",
+      },
+    ],
+  },
+  idealFor: {
+    title: "Designed for companies that value quality hiring",
+    intro:
+      "Our services are built for organizations that understand the importance of hiring the right people. We work with startups, growing businesses, and enterprises that are scaling their operations or undergoing digital transformation.",
+    segments: [
+      {
+        title: "Startups",
+        body: "For startups, we help build strong foundational teams.",
+      },
+      {
+        title: "Growing companies",
+        body: "For growing companies, we support rapid scaling without compromising on quality.",
+      },
+      {
+        title: "Enterprises",
+        body: "For enterprises, we manage complex and specialized hiring requirements.",
+      },
+    ],
+    result:
+      "In every case, our focus remains the same—delivering talent that contributes to business success.",
+  },
+  impact: {
+    title: "Creating long-term value through better hiring decisions",
+    intro: [
+      "The impact of hiring goes beyond filling positions. The right hires improve productivity, strengthen teams, and accelerate business growth. On the other hand, wrong hires lead to delays, costs, and disruptions.",
+      "Our goal is to help you make better hiring decisions. By focusing on quality, alignment, and long-term fit, we ensure that every hire contributes positively to your organization.",
+    ],
+    bullets: [
+      "Stronger and more capable teams",
+      "Reduced employee turnover",
+      "Faster project execution",
+      "Improved overall performance",
+    ],
+  },
+  cta: {
+    title: "Ready to build the team that drives your growth?",
+    body: "Partner with Excellanto for strategic staffing and recruitment that delivers precision, alignment, and long-term value.",
+    closingTitle:
+      "Let us help you identify the right people who can create measurable impact for your organization.",
+    tagline: "Strategic Staffing & Recruitment Solutions",
+    subtext:
+      "From requirement mapping to post-placement support—we handle hiring so you can focus on building your business.",
+    buttonLabel: "Discover More",
+  },
 };
 
 export const heroCopy = {

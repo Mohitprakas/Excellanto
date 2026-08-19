@@ -36,6 +36,7 @@ export const homepageQuery = /* groq */ `
     heroPrimaryCta { ${ctaFields} },
     heroSecondaryCta { ${ctaFields} },
     heroDashboardImage { ${imageFields} },
+    heroBannerImage { ${imageFields} },
     capabilitiesEyebrow, capabilitiesTitle,
     capabilities[]{ title, icon, image { ${imageFields} } },
     valueEyebrow, valueTitle, valueBody,

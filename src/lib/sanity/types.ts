@@ -2,6 +2,15 @@ import type { PortableTextBlock } from "@portabletext/react";
 
 type SanityImageSource = unknown;
 
+export type BlogExternalImageBlock = {
+  _type: "externalImage";
+  _key: string;
+  url: string;
+  alt: string;
+};
+
+export type BlogContentBlock = PortableTextBlock | BlogExternalImageBlock;
+
 export type SanityBlogListItem = {
   _id: string;
   title: string;
@@ -34,7 +43,7 @@ export type BlogPost = {
     src: string;
     alt: string;
   };
-  content?: PortableTextBlock[];
+  content?: BlogContentBlock[];
   seoTitle?: string;
   seoDescription?: string;
 };

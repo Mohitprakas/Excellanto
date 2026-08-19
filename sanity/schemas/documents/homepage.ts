@@ -24,7 +24,8 @@ export const homepage = defineType({
     defineField({ name: "heroBody", title: "Paragraph", type: "text", rows: 5, group: "hero" }),
     defineField({ name: "heroPrimaryCta", title: "Primary button", type: "ctaButton", group: "hero" }),
     defineField({ name: "heroSecondaryCta", title: "Secondary button", type: "ctaButton", group: "hero" }),
-    defineField({ name: "heroDashboardImage", title: "Dashboard preview image", type: "siteImage", group: "hero" }),
+    defineField({ name: "heroDashboardImage", title: "Hero banner image (legacy)", type: "siteImage", group: "hero" }),
+    defineField({ name: "heroBannerImage", title: "Hero banner image", type: "siteImage", group: "hero" }),
 
     defineField({ name: "capabilitiesEyebrow", title: "Eyebrow", type: "string", group: "capabilities" }),
     defineField({ name: "capabilitiesTitle", title: "Title", type: "string", group: "capabilities" }),

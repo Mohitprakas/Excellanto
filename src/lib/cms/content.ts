@@ -22,7 +22,7 @@ import {
   servicesPageQuery,
   siteSettingsQuery,
 } from "./queries";
-import { pickArray, pickText, resolveCmsImage, type CmsImageValue } from "./resolve";
+import { pickArray, pickText, resolveCmsImage, resolveHeroBanner, type CmsImageValue } from "./resolve";
 import type {
   CmsAbout,
   CmsBlogPage,
@@ -177,7 +177,7 @@ export async function getHomepage(): Promise<CmsHomepage> {
       body: pickText(raw.heroBody as string, d.hero.body),
       primaryCta: cta(raw.heroPrimaryCta as RawCta, d.hero.primaryCta),
       secondaryCta: cta(raw.heroSecondaryCta as RawCta, d.hero.secondaryCta),
-      dashboardImage: resolveCmsImage(raw.heroDashboardImage as CmsImageValue, d.hero.dashboardImage),
+      bannerImage: resolveHeroBanner(raw, d.hero.bannerImage),
     },
     capabilities: {
       eyebrow: pickText(raw.capabilitiesEyebrow as string, d.capabilities.eyebrow),

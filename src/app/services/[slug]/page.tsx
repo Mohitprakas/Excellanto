@@ -9,6 +9,9 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CTA } from "@/components/sections/cta";
 import { FadeIn } from "@/components/animations/fade-in";
 import { MobileAppServicePage } from "@/components/sections/mobile-app-service-page";
+import { SeoCognitionServicePage } from "@/components/sections/seo-cognition-service-page";
+import { SocialMediaIntelligenceServicePage } from "@/components/sections/social-media-intelligence-service-page";
+import { StaffingRecruitmentServicePage } from "@/components/sections/staffing-recruitment-service-page";
 import { WebsiteDevServicePage } from "@/components/sections/website-dev-service-page";
 import { getCmsIcon } from "@/lib/cms/icons";
 
@@ -44,6 +47,18 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   if (slug === "website-development") {
     return <WebsiteDevServicePage />;
+  }
+
+  if (slug === "social-media-intelligence") {
+    return <SocialMediaIntelligenceServicePage />;
+  }
+
+  if (slug === "seo-cognition") {
+    return <SeoCognitionServicePage />;
+  }
+
+  if (slug === "staffing-recruitment-service") {
+    return <StaffingRecruitmentServicePage />;
   }
 
   const Icon = getCmsIcon(service.iconName);

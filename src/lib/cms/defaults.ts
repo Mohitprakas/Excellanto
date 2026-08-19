@@ -141,10 +141,7 @@ export const defaultHomepage: CmsHomepage = {
     body: heroCopy.body,
     primaryCta: { label: heroCopy.primaryCta, href: "/contact" },
     secondaryCta: { label: heroCopy.secondaryCta, href: "/contact" },
-    dashboardImage: {
-      src: "/images/ai/hero-dashboard-preview.png",
-      alt: heroCopy.title,
-    },
+    bannerImage: sectionImages.hero,
   },
   capabilities: {
     eyebrow: "Digital Transformation",

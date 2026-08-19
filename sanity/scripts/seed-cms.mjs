@@ -446,20 +446,20 @@ const services = [
     title: "Social Media Intelligence",
     shortTitle: "Social Media Intelligence",
     description:
-      "Analyze audience behavior, engagement patterns, and brand sentiment across social platforms using AI-powered insights. Transform social data into actionable strategies that improve brand visibility, strengthen customer engagement, and drive measurable marketing growth.",
-    megaDescription: "Audience insights & brand sentiment",
+      "At Excellanto, we transform social media activity into actionable intelligence that drives business decisions, strengthens brand positioning, and delivers measurable growth.",
+    megaDescription: "Social media intelligence & analytics",
     icon: "Share2",
     category: "marketing",
     featured: true,
     sortOrder: 7,
     features: [
-      "Audience behavior analysis",
-      "Engagement pattern insights",
-      "Brand sentiment monitoring",
-      "Actionable growth strategies",
+      "Identify what content drives real engagement",
+      "Track how users interact with your brand",
+      "Discover hidden opportunities for growth",
+      "Align social media efforts with business goals",
     ],
     detailIntro:
-      "Analyze audience behavior, engagement patterns, and brand sentiment across social platforms using AI-powered insights.",
+      "Social media platforms are constantly generating valuable data. Excellanto applies AI-driven analytics, behavioral tracking, and predictive insights to convert this data into strategies that improve engagement, optimize campaigns, and accelerate business outcomes.",
     image: img(wp("2026/03/apps-workplace-social-media-holding-profession.jpg"), "Social Media Intelligence"),
   },
   {
@@ -467,15 +467,20 @@ const services = [
     title: "SEO Cognition",
     shortTitle: "SEO Cognition",
     description:
-      "Use AI-driven SEO intelligence to uncover high-value keywords, improve technical SEO, and optimize website visibility. Our data-driven strategies help businesses stay ahead of search algorithm changes and achieve sustainable organic search growth.",
-    megaDescription: "AI-driven SEO intelligence",
+      "At Excellanto, we deliver advanced Search Engine Optimization services designed to position your business at the top of search results, attract high-intent traffic, and convert visibility into measurable growth.",
+    megaDescription: "AI-driven SEO & organic growth",
     icon: "Search",
     category: "marketing",
     featured: true,
     sortOrder: 8,
-    features: ["Keyword intelligence", "On-page SEO", "Technical SEO", "Content strategy"],
+    features: [
+      "Achieve higher rankings for competitive keywords",
+      "Attract targeted users actively searching for your services",
+      "Generate qualified organic leads consistently",
+      "Strengthen brand authority in your industry",
+    ],
     detailIntro:
-      "Search engine optimization today requires more than keyword placement. It demands a strategic approach that aligns with user intent, search engine algorithms, and business goals. Excellanto delivers SEO services that are structured, data-driven, and focused on real performance.",
+      "Our expert SEO team works as an extension of your business—analyzing, optimizing, and refining every element of your website to ensure it performs effectively across search engines.",
     image: img(
       wp(
         "2026/03/gHTQKKoosjK5crf_RyXzH7yvSAB6XUsz2SmGn_RECriO-kAXpt1tMtJjc2qUKIyDmRlY-tq2tqx7emdSCucueyMuPyQHPy-reIgiD6u-GZhJrgYEx15hZOgaPW5NwwFaPM2mJgtv0X2XC-U50ZZ_J-amINUAK3XZGmUBcBh4JgENz0Um80YH5w9MhCWEt7VJ.jpg"
@@ -488,18 +493,17 @@ const services = [
     title: "Staffing Recruitment Service",
     shortTitle: "Staffing Recruitment Service",
     description:
-      "Strategic Staffing & Recruitment Solutions. Building the right team is no longer a routine hiring activity—it is a business-critical function that directly impacts growth, delivery capability, and long-term success.",
+      "Building the right team is no longer a routine hiring activity—it is a business-critical function that directly impacts growth, delivery capability, and long-term success.",
     megaDescription: "Strategic staffing & recruitment",
     icon: "UserCheck",
     category: "talent",
     featured: false,
     sortOrder: 9,
     features: [
-      "Requirement mapping",
-      "Targeted sourcing",
-      "Interview coordination",
-      "Offer management",
-      "Post-placement transition support",
+      "Stronger and more capable teams",
+      "Reduced employee turnover",
+      "Faster project execution",
+      "Improved overall performance",
     ],
     detailIntro:
       "At Excellanto, we approach staffing and recruitment as a strategic business solution, not a transactional service. We work closely with organizations to understand how talent fits into their larger vision, and then we design hiring strategies that deliver not just candidates, but the right people who can create measurable impact.",
@@ -775,7 +779,8 @@ export default async function seed() {
         "We provide advanced AI-powered IT solutions that streamline business operations, improve strategic decision-making, and deliver measurable results. Our intelligent technology platforms enable organizations to scale efficiently, strengthen security, and operate with greater speed, agility, and confidence.",
       heroPrimaryCta: cta("Let’s Talk", "/contact"),
       heroSecondaryCta: cta("Contact Us", "/contact"),
-      heroDashboardImage: img("/images/ai/hero-dashboard-preview.png", "AI Powered IT Solutions & Staffing"),
+      heroBannerImage: img("/images/homepage-banner.png", "AI Powered IT Solutions & Staffing"),
+      heroDashboardImage: img("/images/homepage-banner.png", "AI Powered IT Solutions & Staffing"),
       capabilitiesEyebrow: "Digital Transformation",
       capabilitiesTitle: "Streamlining Operations Accelerating Outcomes",
       capabilities: [

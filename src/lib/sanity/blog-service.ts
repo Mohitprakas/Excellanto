@@ -7,6 +7,7 @@ import {
 } from "./queries";
 import { sanityFetch, isSanityConfigured } from "./client";
 import { getBlogImageFromSanity } from "./image";
+import { resolveBlogContent } from "@/lib/blog/content";
 import type { BlogPost, SanityBlogDetail, SanityBlogListItem } from "./types";
 
 function formatPublishedDate(isoDate: string): string {
@@ -43,7 +44,7 @@ function mapBlogListItem(post: SanityBlogListItem, imageWidth = 1200): BlogPost 
 function mapBlogDetail(post: SanityBlogDetail): BlogPost {
   return {
     ...mapBlogListItem(post, 1600),
-    content: post.content ?? undefined,
+    content: resolveBlogContent(post.slug, post.content ?? undefined),
   };
 }
 
@@ -83,6 +84,11 @@ export async function getLatestBlogs(limit = 3): Promise<BlogPost[]> {
   if (!result?.length) return [];
 
   return result.map((post) => mapBlogListItem(post, 900));
+}
+
+export async function getRelatedBlogs(currentSlug: string, limit = 3): Promise<BlogPost[]> {
+  const all = await getAllPublishedBlogs();
+  return all.filter((post) => post.slug !== currentSlug).slice(0, limit);
 }
 
 export async function getPublishedBlogSlugs(): Promise<string[]> {

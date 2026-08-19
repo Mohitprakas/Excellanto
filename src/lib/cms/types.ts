@@ -94,7 +94,7 @@ export type CmsHomepage = {
     body: string;
     primaryCta: CmsCta;
     secondaryCta: CmsCta;
-    dashboardImage: SiteImage;
+    bannerImage: SiteImage;
   };
   capabilities: {
     eyebrow: string;
@@ -177,6 +177,9 @@ export type CmsService = {
   seoDescription?: string;
   mobile?: Record<string, unknown>;
   website?: Record<string, unknown>;
+  socialMedia?: Record<string, unknown>;
+  seoCognition?: Record<string, unknown>;
+  staffingRecruitment?: Record<string, unknown>;
 };
 
 export type CmsCategory = {
