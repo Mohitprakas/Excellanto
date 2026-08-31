@@ -18,6 +18,7 @@ interface PageHeroProps {
   /** Homepage-style full-bleed dark banner (used on services pages). */
   variant?: "banner" | "light";
   showCtas?: boolean;
+  showBrandName?: boolean;
   imageUnoptimized?: boolean;
 }
 
@@ -29,6 +30,7 @@ export function PageHero({
   image,
   variant = "light",
   showCtas = true,
+  showBrandName = true,
   imageUnoptimized = false,
 }: PageHeroProps) {
   const { settings } = useCms();
@@ -51,19 +53,22 @@ export function PageHero({
           quality={92}
           overlay
           overlayClassName="bg-gradient-to-r from-[#0b1220]/92 via-[#0b1220]/72 to-[#0b1220]/35"
+          imgClassName="object-cover object-[70%_center] md:object-right"
         />
 
         <div className="container-xl relative flex min-h-[calc(72vh-6rem)] flex-col justify-end pb-14 md:min-h-[calc(78vh-7rem)] md:pb-20">
           <div className="max-w-2xl">
-            <FadeIn>
-              <p className="font-display text-4xl font-bold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
-                {settings.name}
-              </p>
-            </FadeIn>
+            {showBrandName ? (
+              <FadeIn>
+                <p className="font-display text-4xl font-bold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+                  {settings.name}
+                </p>
+              </FadeIn>
+            ) : null}
 
             {eyebrow ? (
-              <FadeIn delay={0.08}>
-                <div className="mt-6 flex items-center gap-3">
+              <FadeIn delay={showBrandName ? 0.08 : 0}>
+                <div className={cn("flex items-center gap-3", showBrandName ? "mt-6" : "")}>
                   <span className="ui-accent-bar !bg-accent" />
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
                     {eyebrow}
@@ -72,7 +77,7 @@ export function PageHero({
               </FadeIn>
             ) : null}
 
-            <FadeIn delay={0.12}>
+            <FadeIn delay={showBrandName ? 0.12 : 0.06}>
               <h1 className="font-display mt-4 text-2xl font-bold tracking-[-0.03em] text-white text-balance sm:text-3xl md:text-4xl md:leading-[1.15]">
                 {title}
               </h1>

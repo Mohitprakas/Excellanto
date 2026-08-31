@@ -11,6 +11,57 @@ export type SiteImage = {
 const e = (path: string) =>
   path.startsWith("http") ? path : `https://excellanto.com/wp-content/uploads/${path}`;
 
+const BANNER_CACHE_VERSION = "20260824";
+
+/** Premium service hero banners — 1920×800, unique photorealistic per service */
+const serviceBanner = (slug: string, alt: string): SiteImage => ({
+  src: `/images/services/banners/${slug}.jpg?v=${BANNER_CACHE_VERSION}`,
+  alt,
+});
+
+export const serviceBannerImages: Record<string, SiteImage> = {
+  "mobile-app-development": serviceBanner(
+    "mobile-app-development",
+    "Mobile App Development — professional team reviewing mobile applications"
+  ),
+  "website-development": serviceBanner(
+    "website-development",
+    "Website Development — web developers building modern websites"
+  ),
+  "ai-driven-operations-automation": serviceBanner(
+    "ai-driven-operations-automation",
+    "AI-Driven Operations Automation — operations team optimizing business workflows"
+  ),
+  "intelligent-cloud-management": serviceBanner(
+    "intelligent-cloud-management",
+    "Intelligent Cloud Management — cloud engineers managing enterprise infrastructure"
+  ),
+  "smart-home-automation-powered-by-ai-llm-home-assistant": serviceBanner(
+    "smart-home-automation-powered-by-ai-llm-home-assistant",
+    "Smart Home Automation Powered by AI & LLM Home Assistant — smart home professional consultation"
+  ),
+  "it-strategy-innovation-consulting": serviceBanner(
+    "it-strategy-innovation-consulting",
+    "IT Strategy & Innovation Consulting — executive strategy session"
+  ),
+  "predictive-performance-marketing": serviceBanner(
+    "predictive-performance-marketing",
+    "Predictive Performance Marketing — marketing team analyzing campaign performance"
+  ),
+  "social-media-intelligence": serviceBanner(
+    "social-media-intelligence",
+    "Social Media Intelligence — team analyzing social media insights"
+  ),
+  "seo-cognition": serviceBanner(
+    "seo-cognition",
+    "SEO Cognition — SEO specialist optimizing search performance"
+  ),
+  "staffing-recruitment-service": serviceBanner(
+    "staffing-recruitment-service",
+    "Staffing Recruitment Service — recruiter meeting qualified candidate"
+  ),
+};
+
 export const sectionImages = {
   hero: {
     src: "/images/homepage-banner.png",
@@ -90,48 +141,17 @@ export const capabilityImages: Record<string, SiteImage> = {
 };
 
 export const serviceImages: Record<string, SiteImage> = {
-  "mobile-app-development": {
-    src: e("2026/03/person-using-ar-technology-perform-their-occupation.jpg"),
-    alt: "Mobile App Development",
-  },
-  "website-development": {
-    src: e("2026/03/apps-workplace-social-media-holding-profession.jpg"),
-    alt: "Website Development",
-  },
-  "ai-driven-operations-automation": {
-    src: e("2026/03/futuristic-time-machine-1.jpg"),
-    alt: "AI-Driven Operations Automation",
-  },
-  "intelligent-cloud-management": {
-    src: e("2026/03/woman-interacting-with-futuristic-holographic-interface-1.jpg"),
-    alt: "Intelligent Cloud Management",
-  },
-  "smart-home-automation-powered-by-ai-llm-home-assistant": {
-    src: e("2026/06/freedom-maq15gmaq15gmaq1.png"),
-    alt: "Smart Home Automation Powered by AI & LLM Home Assistant",
-  },
-  "it-strategy-innovation-consulting": {
-    src: e("2026/03/57830.jpg"),
-    alt: "IT Strategy & Innovation Consulting",
-  },
-  "predictive-performance-marketing": {
-    src: e("2024/05/ch1-img-1.webp"),
-    alt: "Predictive Performance Marketing",
-  },
-  "social-media-intelligence": {
-    src: e("2026/03/apps-workplace-social-media-holding-profession.jpg"),
-    alt: "Social Media Intelligence",
-  },
-  "seo-cognition": {
-    src: e(
-      "2026/03/gHTQKKoosjK5crf_RyXzH7yvSAB6XUsz2SmGn_RECriO-kAXpt1tMtJjc2qUKIyDmRlY-tq2tqx7emdSCucueyMuPyQHPy-reIgiD6u-GZhJrgYEx15hZOgaPW5NwwFaPM2mJgtv0X2XC-U50ZZ_J-amINUAK3XZGmUBcBh4JgENz0Um80YH5w9MhCWEt7VJ.jpg"
-    ),
-    alt: "SEO Cognition",
-  },
-  "staffing-recruitment-service": {
-    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
-    alt: "Staffing Recruitment Service",
-  },
+  "mobile-app-development": serviceBannerImages["mobile-app-development"],
+  "website-development": serviceBannerImages["website-development"],
+  "ai-driven-operations-automation": serviceBannerImages["ai-driven-operations-automation"],
+  "intelligent-cloud-management": serviceBannerImages["intelligent-cloud-management"],
+  "smart-home-automation-powered-by-ai-llm-home-assistant":
+    serviceBannerImages["smart-home-automation-powered-by-ai-llm-home-assistant"],
+  "it-strategy-innovation-consulting": serviceBannerImages["it-strategy-innovation-consulting"],
+  "predictive-performance-marketing": serviceBannerImages["predictive-performance-marketing"],
+  "social-media-intelligence": serviceBannerImages["social-media-intelligence"],
+  "seo-cognition": serviceBannerImages["seo-cognition"],
+  "staffing-recruitment-service": serviceBannerImages["staffing-recruitment-service"],
 };
 
 export const processImages: SiteImage[] = [
@@ -153,20 +173,16 @@ export const processImages: SiteImage[] = [
   },
 ];
 
-export const brandLogos: SiteImage[] = [
-  { src: e("2024/05/c4-br-1.webp"), alt: "Brand partner" },
-  { src: e("2024/05/c4-br-2.webp"), alt: "Brand partner" },
-  { src: e("2024/05/c4-br-3.webp"), alt: "Brand partner" },
-  { src: e("2024/05/c4-br-4.webp"), alt: "Brand partner" },
-  { src: e("2024/05/c4-br-5.webp"), alt: "Brand partner" },
-  { src: e("2024/05/c4-br-6.webp"), alt: "Brand partner" },
-];
+export const brandLogos: SiteImage[] = Array.from({ length: 31 }, (_, index) => {
+  const id = String(index + 1).padStart(2, "0");
+  return {
+    src: `/images/brands/2026/${id}.png`,
+    alt: `Brand partner ${index + 1}`,
+  };
+});
 
 export const mobileAppImages = {
-  hero: {
-    src: e("2026/03/person-using-ar-technology-perform-their-occupation.jpg"),
-    alt: "Why Choose Our Mobile App Development Services?",
-  },
+  hero: serviceBannerImages["mobile-app-development"],
   process: [
     {
       src: e("2026/03/adult-woman-presenting-business-plan.jpg"),
@@ -196,10 +212,7 @@ export const mobileAppImages = {
 } as const;
 
 export const websiteDevImages = {
-  hero: {
-    src: e("2026/03/apps-workplace-social-media-holding-profession.jpg"),
-    alt: "Why Choose Excellanto?",
-  },
+  hero: serviceBannerImages["website-development"],
   offerings: [
     {
       src: e("2026/03/young-employees-sitting-office-table-using-laptop-2.jpg"),
@@ -251,10 +264,7 @@ export const websiteDevImages = {
 } as const;
 
 export const socialMediaImages = {
-  hero: {
-    src: e("2026/03/apps-workplace-social-media-holding-profession.jpg"),
-    alt: "Social media intelligence dashboard and professional workspace",
-  },
+  hero: serviceBannerImages["social-media-intelligence"],
   intelligenceHub: {
     src: e("2026/03/social-media-marketing-concept-marketing-with-applications-1.jpg"),
     alt: "Social applications and marketing intelligence concept",
@@ -289,13 +299,124 @@ export const socialMediaImages = {
   },
 } as const;
 
-export const seoCognitionImages = {
-  hero: {
-    src: e(
-      "2026/03/gHTQKKoosjK5crf_RyXzH7yvSAB6XUsz2SmGn_RECriO-kAXpt1tMtJjc2qUKIyDmRlY-tq2tqx7emdSCucueyMuPyQHPy-reIgiD6u-GZhJrgYEx15hZOgaPW5NwwFaPM2mJgtv0X2XC-U50ZZ_J-amINUAK3XZGmUBcBh4JgENz0Um80YH5w9MhCWEt7VJ.jpg"
-    ),
-    alt: "SEO Cognition — advanced search engine optimization analytics",
+export const aiDrivenOperationsImages = {
+  hero: serviceBannerImages["ai-driven-operations-automation"],
+  heroAccent: {
+    src: e("2026/03/futuristic-time-machine-1.jpg"),
+    alt: "futuristic time machine 1",
   },
+  capabilities: {
+    src: e("2026/03/woman-interacting-with-futuristic-holographic-interface-1.jpg"),
+    alt: "woman interacting with futuristic holographic interface 1",
+  },
+  experience: {
+    src: e("2026/03/cheerful-team-engineers-using-laptop-server-farm-analyzing-data-1.jpg"),
+    alt: "Built with experience, designed for real business challenges",
+  },
+  process: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "A clear and structured approach that ensures results",
+  },
+  industries: {
+    src: e("2026/03/group-industry-experts-engineers-analyzing-solar-panel-systems-1-1.jpg"),
+    alt: "Supporting businesses across industries with tailored solutions",
+  },
+  impact: {
+    src: e("2026/03/medium-shot-men-working-together-office-2.jpg"),
+    alt: "Where AI automation creates the biggest impact in your business",
+  },
+  future: {
+    src: e("2026/02/AI-meeting_50.png"),
+    alt: "Building a smarter and future-ready business environment",
+  },
+} as const;
+
+export const intelligentCloudManagementImages = {
+  hero: serviceBannerImages["intelligent-cloud-management"],
+  heroAccent: {
+    src: e("2026/03/group-industry-experts-engineers-analyzing-solar-panel-systems-1-1.jpg"),
+    alt: "group industry experts engineers analyzing solar panel systems 1 1",
+  },
+  results: {
+    src: e("2026/03/group-industry-experts-engineers-analyzing-solar-panel-systems-1-1.jpg"),
+    alt: "group industry experts engineers analyzing solar panel systems 1 1",
+  },
+  businessFunctions: {
+    src: e("2026/03/cheerful-team-engineers-using-laptop-server-farm-analyzing-data-1.jpg"),
+    alt: "cheerful team engineers using laptop server farm analyzing data 1",
+  },
+  industries: {
+    src: e("2026/03/cheerful-team-engineers-using-laptop-server-farm-analyzing-data-1.jpg"),
+    alt: "cheerful team engineers using laptop server farm analyzing data 1",
+  },
+  infrastructure: {
+    src: e("2026/03/young-employees-sitting-office-table-using-laptop-2-1.jpg"),
+    alt: "Designed around your infrastructure, not forced onto it",
+  },
+  process: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "A practical approach that ensures smooth execution",
+  },
+} as const;
+
+export const itStrategyInnovationImages = {
+  hero: serviceBannerImages["it-strategy-innovation-consulting"],
+  heroAccent: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "IT Strategy & Innovation Consulting",
+  },
+  infrastructure: {
+    src: e("2026/03/young-employees-sitting-office-table-using-laptop-2-1.jpg"),
+    alt: "Designed around your infrastructure, not forced onto it",
+  },
+  results: {
+    src: e("2026/03/group-industry-experts-engineers-analyzing-solar-panel-systems-1-1.jpg"),
+    alt: "When cloud management is done right, results follow naturally",
+  },
+} as const;
+
+export const predictivePerformanceMarketingImages = {
+  hero: serviceBannerImages["predictive-performance-marketing"],
+  heroAccent: {
+    src: e("2024/05/ch4-img-2.webp"),
+    alt: "ch4 img 2",
+  },
+  whyChooseUs: {
+    src: e("2024/05/ch4-img-1.webp"),
+    alt: "ch4 img 1",
+  },
+  overview: {
+    src: e("2026/05/Digital-Marketing.jpeg"),
+    alt: "Predictive Performance Marketing",
+  },
+  conversions: {
+    src: e("2024/05/ch1-img-2.webp"),
+    alt: "ch1 img 2",
+  },
+  dataExecution: {
+    src: e("2024/05/bg-il-2.webp"),
+    alt: "bg il 2",
+  },
+  capabilities: {
+    src: e("2026/05/Digital-Marketing.jpeg"),
+    alt: "Key capabilities that power your marketing growth",
+  },
+  process: {
+    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
+    alt: "A clear and structured approach that ensures results",
+  },
+  idealFor: {
+    src: e("2024/05/ch4-img-1.webp"),
+    alt: "Designed for businesses focused on growth",
+  },
+  impact: {
+    src: e("2024/05/ch4-img-2.webp"),
+    alt: "Where predictive performance marketing creates impact",
+  },
+} as const;
+
+export const seoCognitionImages = {
+  hero: serviceBannerImages["seo-cognition"],
   strategy: {
     src: e("2026/03/young-employees-sitting-office-table-using-laptop-2-1.jpg"),
     alt: "SEO team optimizing search performance",
@@ -323,10 +444,7 @@ export const seoCognitionImages = {
 } as const;
 
 export const staffingRecruitmentImages = {
-  hero: {
-    src: e("2026/05/strategy-business-brainstorming-graphic-concept.jpg"),
-    alt: "Strategic staffing and recruitment planning",
-  },
+  hero: serviceBannerImages["staffing-recruitment-service"],
   approach: {
     src: e("2024/05/feh-n3-img-1.webp"),
     alt: "Focused hiring approach and candidate evaluation",

@@ -13,7 +13,7 @@ import { getLatestBlogs } from "@/lib/sanity/blog-service";
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const latestBlogs = await getLatestBlogs(3);
+  const latestBlogs = await getLatestBlogs(6);
 
   return (
     <>

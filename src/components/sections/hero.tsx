@@ -5,6 +5,7 @@ import { Sparkles } from "lucide-react";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { FadeIn } from "@/components/animations/fade-in";
 import { useCms } from "@/lib/cms/provider";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
   const { homepage } = useCms();
@@ -27,17 +28,19 @@ export function Hero() {
 
       <div className="container-xl relative z-10 flex min-h-[calc(100svh-5rem)] flex-col justify-center pb-16 pt-10 md:pb-20 md:pt-14">
         <div className="max-w-2xl text-left lg:max-w-3xl">
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-[#0b1220]/65 px-3.5 py-1.5 shadow-[0_0_28px_rgba(56,189,248,0.18)] backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-sky-300" />
-              <span className="text-[12px] font-medium tracking-wide text-sky-100/90">
-                {hero.eyebrow}
-              </span>
-            </div>
-          </FadeIn>
+          {hero.eyebrow?.trim() ? (
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-300/25 bg-[#0b1220]/65 px-3.5 py-1.5 shadow-[0_0_28px_rgba(56,189,248,0.18)] backdrop-blur-md">
+                <Sparkles className="h-3.5 w-3.5 text-sky-300" />
+                <span className="text-[12px] font-medium tracking-wide text-sky-100/90">
+                  {hero.eyebrow}
+                </span>
+              </div>
+            </FadeIn>
+          ) : null}
 
-          <FadeIn delay={0.08}>
-            <h1 className="mt-7 text-balance text-[2rem] font-bold leading-[1.12] tracking-[-0.04em] sm:text-5xl md:text-[3.5rem] md:leading-[1.08]">
+          <FadeIn delay={hero.eyebrow?.trim() ? 0.08 : 0}>
+            <h1 className={cn("text-balance text-[2rem] font-bold leading-[1.12] tracking-[-0.04em] sm:text-5xl md:text-[3.5rem] md:leading-[1.08]", hero.eyebrow?.trim() ? "mt-7" : "mt-0")}>
               <span className="text-white">{hero.title} </span>
               <span className="bg-gradient-to-b from-sky-200 to-sky-400 bg-clip-text text-transparent">
                 {hero.highlight}
@@ -53,16 +56,10 @@ export function Hero() {
 
           <FadeIn delay={0.2}>
             <div className="mt-8 flex flex-row flex-wrap items-center gap-3">
-              <MagneticButton
-                href={hero.primaryCta.href}
-                className="!h-11 !rounded-full !border-0 !bg-gradient-to-b !from-[#dbeafe] !to-[#7dd3fc] !px-6 !text-sm !font-semibold !text-slate-900 !shadow-[0_0_32px_rgba(56,189,248,0.4)] hover:!from-white hover:!to-sky-200"
-              >
+              <MagneticButton href={hero.primaryCta.href} variant="hero-primary">
                 {hero.primaryCta.label}
               </MagneticButton>
-              <MagneticButton
-                href={hero.secondaryCta.href}
-                className="!h-11 !rounded-full !border !border-white/25 !bg-white/[0.04] !px-6 !text-sm !font-semibold !text-white backdrop-blur-sm hover:!bg-white/[0.08]"
-              >
+              <MagneticButton href={hero.secondaryCta.href} variant="hero-secondary">
                 {hero.secondaryCta.label}
               </MagneticButton>
             </div>

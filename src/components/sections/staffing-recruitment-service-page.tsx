@@ -67,7 +67,7 @@ export function StaffingRecruitmentServicePage() {
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-45"
+            className="object-cover object-[70%_center] opacity-45 md:object-right"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#040712]/96 via-[#040712]/82 to-[#040712]/55" />
@@ -131,6 +131,7 @@ export function StaffingRecruitmentServicePage() {
                     {...hqImage}
                     className="aspect-[5/4] w-full"
                     sizes="(max-width: 1024px) 80vw, 38vw"
+                    imgClassName="object-cover object-right"
                   />
                 </div>
                 <div className="absolute -bottom-4 right-0 z-30 rounded-xl border border-white/15 bg-[#0b1220]/90 px-5 py-4 shadow-lg backdrop-blur-md">

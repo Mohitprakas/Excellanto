@@ -94,16 +94,20 @@ body {
 .pro-card {
   border: 1px solid var(--border);
   background: #fff;
-  border-radius: 0;
-  box-shadow: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .pro-card:hover {
-  border-color: rgb(29 78 216 / 0.3);
-  background: var(--surface);
-  box-shadow: none;
-  transform: none;
+  border-color: rgb(29 78 216 / 0.22);
+  background: #fff;
+  box-shadow: var(--shadow-float);
+  transform: translateY(-2px);
 }
 
 .section-padding {
@@ -126,7 +130,9 @@ body {
 .ui-accent-bar {
   width: 2.5rem;
   height: 3px;
-  background: var(--primary);
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }
 
 .service-row {
@@ -262,6 +268,37 @@ body {
 .blog-detail-list-ordered {
   list-style: decimal;
   padding-left: 1.25rem;
+}
+
+@keyframes brand-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes brand-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.brand-marquee-track {
+  animation: brand-marquee 50s linear infinite;
+}
+
+.brand-marquee-track-reverse {
+  animation: brand-marquee-reverse 55s linear infinite;
+}
+
+.brand-marquee-track:hover,
+.brand-marquee-track-reverse:hover {
+  animation-play-state: paused;
 }
 
 @keyframes float {

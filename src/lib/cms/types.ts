@@ -180,6 +180,10 @@ export type CmsService = {
   socialMedia?: Record<string, unknown>;
   seoCognition?: Record<string, unknown>;
   staffingRecruitment?: Record<string, unknown>;
+  aiDrivenOperations?: Record<string, unknown>;
+  intelligentCloudManagement?: Record<string, unknown>;
+  itStrategyInnovation?: Record<string, unknown>;
+  predictivePerformanceMarketing?: Record<string, unknown>;
 };
 
 export type CmsCategory = {

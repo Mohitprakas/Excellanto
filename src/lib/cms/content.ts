@@ -23,6 +23,7 @@ import {
   siteSettingsQuery,
 } from "./queries";
 import { pickArray, pickText, resolveCmsImage, resolveHeroBanner, type CmsImageValue } from "./resolve";
+import { serviceBannerImages } from "@/lib/images";
 import type {
   CmsAbout,
   CmsBlogPage,
@@ -151,11 +152,11 @@ export async function getHomepage(): Promise<CmsHomepage> {
       })
     : d.why.cards;
 
-  const logos = Array.isArray(raw.brandLogos)
-    ? (raw.brandLogos as CmsImageValue[]).map((logo, i) =>
-        resolveCmsImage(logo, d.brands.logos[i] ?? d.brands.logos[0])
-      )
-    : d.brands.logos;
+  const cmsBrandLogos = Array.isArray(raw.brandLogos) ? (raw.brandLogos as CmsImageValue[]) : [];
+  const logos =
+    cmsBrandLogos.length >= d.brands.logos.length
+      ? cmsBrandLogos.map((logo, i) => resolveCmsImage(logo, d.brands.logos[i] ?? d.brands.logos[0]))
+      : d.brands.logos;
 
   const testimonials = Array.isArray(raw.testimonials)
     ? (raw.testimonials as { quote?: string; name?: string; role?: string; isPublished?: boolean; image?: CmsImageValue }[])
@@ -170,7 +171,7 @@ export async function getHomepage(): Promise<CmsHomepage> {
 
   return {
     hero: {
-      eyebrow: pickText(raw.heroEyebrow as string, d.hero.eyebrow),
+      eyebrow: d.hero.eyebrow,
       title: pickText(raw.heroTitle as string, d.hero.title),
       highlight: pickText(raw.heroHighlight as string, d.hero.highlight),
       subtitle: pickText(raw.heroSubtitle as string, d.hero.subtitle),
@@ -256,7 +257,16 @@ function mapService(raw: Record<string, unknown>, fallback?: CmsService): CmsSer
     sortOrder: typeof raw.sortOrder === "number" ? raw.sortOrder : (base?.sortOrder ?? 0),
     features: pickArray(raw.features as string[], base?.features ?? []),
     detailIntro: pickText(raw.detailIntro as string, base?.detailIntro ?? ""),
-    image: resolveCmsImage(raw.image as CmsImageValue, base?.image ?? { src: "", alt: slug }),
+    image: (() => {
+      const banner = serviceBannerImages[slug];
+      if (banner) {
+        return {
+          src: banner.src,
+          alt: pickText((raw.image as CmsImageValue)?.alt, banner.alt),
+        };
+      }
+      return resolveCmsImage(raw.image as CmsImageValue, base?.image ?? { src: "", alt: slug });
+    })(),
     sidebarTitle: pickText(raw.sidebarTitle as string, base?.sidebarTitle ?? "Contact Us"),
     sidebarBody: pickText(raw.sidebarBody as string, base?.sidebarBody ?? ""),
     sidebarCta: cta(raw.sidebarCta as RawCta, base?.sidebarCta ?? { label: "Message Now", href: "/contact" }),

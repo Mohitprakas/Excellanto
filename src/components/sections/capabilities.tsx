@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionImage } from "@/components/ui/section-image";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { getCmsIcon } from "@/lib/cms/icons";
 import { useCms } from "@/lib/cms/provider";
@@ -13,16 +14,13 @@ export function Capabilities() {
     <section className="bg-white">
       <div className="container-xl section-padding !pb-8">
         <FadeIn>
-          <div className="flex flex-col gap-3 border-b border-border pb-8 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {section.eyebrow}
-              </p>
-              <h2 className="font-display mt-3 max-w-xl text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                {section.title}
-              </h2>
-            </div>
-          </div>
+          <SectionHeading
+            eyebrow={section.eyebrow}
+            title={section.title}
+            align="left"
+            accentBar
+            className="border-b border-border pb-8"
+          />
         </FadeIn>
       </div>
 
@@ -44,7 +42,7 @@ export function Capabilities() {
                   <span className="mb-auto text-[11px] font-semibold tracking-[0.14em] text-white/55">
                     0{index + 1}
                   </span>
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-white/10 text-white backdrop-blur-sm">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white backdrop-blur-sm transition-colors group-hover:bg-accent/90">
                     <Icon className="h-[18px] w-[18px]" />
                   </div>
                   <h3 className="font-display text-lg font-bold leading-snug tracking-tight text-white">

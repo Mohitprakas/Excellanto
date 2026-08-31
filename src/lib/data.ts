@@ -692,6 +692,603 @@ export const socialMediaIntelligencePage = {
   },
 };
 
+/** Content from excellanto.com/ai-driven-operations-automation/ */
+export const aiDrivenOperationsAutomationPage = {
+  heroEyebrow: "choose us",
+  heroTitle: "Turning everyday operations into intelligent, automated systems",
+  intro:
+    "Traditional automation focuses only on repetitive tasks, but modern businesses require much more than that. Our AI-driven approach ensures that your operations are not only automated but also capable of learning, adapting, and improving over time.",
+  heroBullets: [
+    "Understand patterns in your business data",
+    "Automate decision-based workflows",
+    "Reduce dependency on manual supervision",
+    "Continuously improve performance through data insights",
+  ],
+  experience: {
+    title: "Built with experience, designed for real business challenges",
+    intro:
+      "At Excellanto, we don't believe in one-size-fits-all solutions. Every business operates differently, and therefore, every automation strategy must be tailored.",
+    understandLeadIn: "Our team works closely with you to understand:",
+    understandBullets: [
+      "How your current workflows function",
+      "Where inefficiencies exist",
+      "Which processes consume the most time and resources",
+      "What outcomes you expect from automation",
+      "Based on this, we design and implement solutions that directly address your operational challenges while aligning with your long-term goals.",
+    ],
+    expertiseLeadIn: "Our expertise includes:",
+    expertiseBullets: [
+      "AI-based workflow automation",
+      "Intelligent process optimization",
+      "Robotic Process Automation (RPA)",
+      "Enterprise system integration (ERP, CRM, APIs)",
+      "Because of this strong foundation, we are able to deliver solutions that are practical, scalable, and result-oriented.",
+    ],
+  },
+  capabilities: {
+    eyebrow: "our capabilities",
+    title: "What you actually gain when operations become automated",
+    intro:
+      "When businesses adopt AI-driven automation, the impact is visible across every level of operations. It is not just about saving time—it is about transforming how work gets done.",
+    items: [
+      {
+        title: "More efficiency across daily operations",
+        body: "Tasks that once required hours of manual effort can be completed in minutes. This allows your teams to focus on higher-value activities instead of repetitive work.",
+      },
+      {
+        title: "Faster and more confident decision-making",
+        body: "With access to real-time insights and predictive analytics, you can make decisions quickly and with greater accuracy.",
+      },
+      {
+        title: "Ability to scale without complexity",
+        body: "As your business grows, automated systems handle increased workloads without requiring major changes in infrastructure.",
+      },
+      {
+        title: "Reduction in operational costs",
+        body: "By minimizing manual intervention and optimizing resource usage, automation helps reduce unnecessary expenses.",
+      },
+      {
+        title: "Consistency and accuracy in processes",
+        body: "AI systems eliminate human errors and ensure that every task is performed with precision and consistency",
+      },
+      {
+        title: "Better experience for customers and stakeholders",
+        body: "Faster processes and improved efficiency lead to better service delivery and stronger business relationships.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "A clear and structured approach that ensures results",
+    steps: [
+      {
+        title: "Understanding your operations in detail",
+        body: "We begin by studying your current workflows, identifying inefficiencies, and understanding your business goals. This step lays the foundation for everything that follows.",
+      },
+      {
+        title: "Designing a solution that fits your business",
+        body: "Instead of forcing a predefined system, we create a customized automation framework that aligns perfectly with your processes.",
+      },
+      {
+        title: "Implementing without disrupting your work",
+        body: "Our team ensures smooth integration with your existing systems, so your operations continue without interruptions.",
+      },
+      {
+        title: "Testing for performance and accuracy",
+        body: "Before full deployment, we test every component to ensure reliability, efficiency, and accuracy.",
+      },
+      {
+        title: "Continuous improvement and optimization",
+        body: "After implementation, we monitor performance, refine workflows, and update systems to maintain long-term efficiency.",
+      },
+    ],
+  },
+  industries: {
+    title: "Supporting businesses across industries with tailored solutions",
+    intro:
+      "Our experience spans multiple industries, allowing us to deliver automation solutions that address specific business challenges.",
+    bullets: [
+      "IT and technology companies",
+      "E-commerce and retail businesses",
+      "Healthcare organizations",
+      "Financial and professional services",
+      "Manufacturing and operations-driven businesses",
+      "List TitReal estate and infrastructure firms",
+    ],
+  },
+  trust: {
+    title: "Why businesses trust Excellanto for AI-driven automation",
+    intro:
+      "Choosing the right partner makes a significant difference in the success of your automation journey. At Excellanto, we focus on delivering real business value, not just technical solutions.",
+    bullets: [
+      "Strong expertise in AI and enterprise IT solutions",
+      "A practical, business-focused approach to automation",
+      "Customized solutions tailored to your needs",
+      "Scalable systems designed for long-term growth",
+      "Reliable support and continuous optimization",
+    ],
+  },
+  impactAreas: {
+    eyebrow: "Where AI automation creates the biggest impact in your business",
+    items: [
+      {
+        title: "Finance and accounting",
+        body: "Automate invoice processing, reconciliation, and financial reporting for faster and more accurate results.",
+      },
+      {
+        title: "Human resources",
+        body: "Simplify employee onboarding, payroll processing, and data management with intelligent automation.",
+      },
+      {
+        title: "Customer support",
+        body: "Improve response times and service quality with automated ticketing systems and AI-powered support tools.",
+      },
+      {
+        title: "Sales and marketing",
+        body: "Streamline lead management, campaign execution, and performance tracking to improve conversion rates.",
+      },
+      {
+        title: "Core operations",
+        body: "Optimize workflows, manage supply chains, and automate reporting for better operational control.",
+      },
+    ],
+  },
+  future: {
+    title: "Building a smarter and future-ready business environment",
+    intro:
+      "The future of business operations lies in intelligent systems that can adapt, learn, and scale. AI-Driven Operations Automation is not just a trend—it is a strategic necessity for organizations looking to stay competitive.",
+    leadIn: "With Excellanto, you can build an operational environment that is:",
+    bullets: [
+      "Efficient and streamlined",
+      "Data-driven and intelligent",
+      "Scalable and flexible",
+      "Secure and reliable",
+    ],
+  },
+  cta: {
+    title: "Let's turn your social data into real business value",
+    body: "If you want to move beyond basic social media management and leverage data for smarter growth, Excellanto is ready to deliver.",
+    closingTitle:
+      "Partner with Excellanto to build intelligent, insight-driven social media strategies that drive engagement, conversions, and sustainable growth.",
+    email: "support@excellanto.com",
+    website: "https://excellanto.com",
+    tagline: "Make smarter decisions with Social Media Intelligence",
+    subtext:
+      "Work with Excellanto to unlock the full potential of your social media and turn insights into measurable business outcomes.",
+  },
+};
+
+/** Content from excellanto.com/intelligent-cloud-management/ */
+export const intelligentCloudManagementPage = {
+  opening: [
+    "Cloud infrastructure is the backbone of modern digital operations, but without the right control and visibility, it can quickly become complex, expensive, and difficult to manage.",
+    "At Excellanto, we deliver Intelligent Cloud Management solutions that bring clarity, control, and performance to your cloud ecosystem while supporting long-term business growth.",
+    "Our solutions are designed to help businesses move beyond basic cloud usage and build an environment that is optimized, secure, and aligned with operational goals. By combining AI-driven monitoring, automation, and cloud optimization strategies, we ensure that your infrastructure performs consistently while adapting to changing business needs.",
+    "With strong expertise in enterprise cloud environments, IT infrastructure, and automation technologies, Excellanto enables organizations to operate with confidence while making the most of their cloud investments.",
+  ],
+  chooseUs: {
+    eyebrow: "choose us",
+    title: "Bringing structure and control to complex cloud environments",
+    body: "Cloud environments often grow rapidly, and over time, they can become difficult to manage. Multiple services, scattered resources, and lack of monitoring can lead to inefficiencies. Therefore, our approach focuses on simplifying your cloud operations and bringing everything under a structured and controlled system.",
+    bullets: [
+      "Gain complete visibility into your cloud infrastructure",
+      "Manage workloads more efficiently",
+      "Track performance across systems in real time",
+      "Eliminate unnecessary resource usage",
+      "Maintain consistency across environments",
+    ],
+  },
+  infrastructure: {
+    title: "Designed around your infrastructure, not forced onto it",
+    intro:
+      "Every organization uses the cloud differently. Some operate on hybrid models, while others depend on multi-cloud platforms. Because of this, we do not apply generic solutions. Instead, we carefully understand your infrastructure and design a management system that fits your operations.",
+    evaluateLeadIn: "Our process begins with evaluating:",
+    evaluateBullets: [
+      "Your current cloud architecture",
+      "Application performance and dependencies",
+      "Cost distribution across services",
+      "Security configurations and risks",
+      "Based on this understanding, we create a tailored cloud management strategy that aligns with your business objectives and ensures long-term efficiency.",
+    ],
+    strategyParagraph:
+      "Based on this understanding, we create a tailored cloud management strategy that aligns with your business objectives and ensures long-term efficiency.",
+    capabilitiesLeadIn: "Our core capabilities include:",
+    capabilitiesBullets: [
+      "Multi-cloud and hybrid cloud environment management",
+      "Cloud infrastructure optimization",
+      "Resource allocation and cost control",
+      "Continuous performance monitoring",
+      "Security management and compliance support",
+      "Automation of cloud operations",
+    ],
+  },
+  results: {
+    title: "When cloud management is done right, results follow naturally",
+    items: [
+      {
+        title: "Clear visibility and better decision-making",
+        body: "You gain real-time insights into your infrastructure, helping you make faster and more informed decisions.",
+      },
+      {
+        title: "Controlled and optimized cloud spending",
+        body: "Resources are used efficiently, reducing unnecessary costs and improving overall budget control.",
+      },
+      {
+        title: "Consistent system performance",
+        body: "Applications and services run smoothly with minimal disruptions, ensuring reliable operations.",
+      },
+      {
+        title: "Strong data protection and system security",
+        body: "Security measures are continuously monitored and updated to protect your infrastructure.",
+      },
+      {
+        title: "Flexibility to grow without limitations",
+        body: "Your cloud environment adapts easily as your business scales, without creating operational challenges.",
+      },
+      {
+        title: "Reduced downtime and improved reliability",
+        body: "Proactive monitoring and automated responses ensure that issues are addressed before they impact your business.",
+      },
+    ],
+  },
+  businessFunctions: {
+    eyebrow: "choose us",
+    title: "Supporting multiple business functions through cloud efficiency",
+    intro:
+      "Cloud infrastructure plays a critical role across different areas of your business. Our solutions ensure that each function benefits from a stable and optimized environment.",
+    bullets: [
+      "Application Hosting: Reliable and high-performance hosting for business applications",
+      "Data Management: Secure storage and efficient data processing",
+      "Development Environments: Scalable infrastructure for development and testing",
+      "Business Operations: Smooth execution of daily processes through stable systems",
+      "Customer Platforms: Improved performance for customer-facing applications",
+    ],
+    discoverMore: "Discover More",
+  },
+  process: {
+    eyebrow: "A practical approach that ensures smooth execution",
+    steps: [
+      {
+        title: "Understanding your existing cloud setup",
+        body: "We begin by analyzing your infrastructure, identifying inefficiencies, and understanding your operational requirements.",
+      },
+      {
+        title: "Creating a tailored cloud management strategy",
+        body: "Based on our analysis, we design a solution that improves performance, reduces cost, and strengthens security.",
+      },
+      {
+        title: "Implementing with minimal disruption",
+        body: "Our team ensures that all changes are introduced smoothly without affecting your ongoing operations.",
+      },
+      {
+        title: "Monitoring performance continuously",
+        body: "We track system behavior in real time to maintain performance and prevent issues.",
+      },
+      {
+        title: "Improving and scaling over time",
+        body: "As your business grows, we refine and expand your cloud environment to support new demands.",
+      },
+    ],
+  },
+  industries: {
+    title: "Experience that adapts to different industries",
+    intro:
+      "Excellanto works with businesses across various industries, each with unique cloud requirements. Our ability to customize solutions ensures that every organization receives the right level of support.",
+    serveLeadIn: "We serve:",
+    bullets: [
+      "Technology and SaaS companies",
+      "E-commerce and digital platforms",
+      "Healthcare organizations",
+      "Financial services and consulting firms",
+      "Manufacturing and logistics businesses",
+      "Real estate and infrastructure companies",
+    ],
+    closing:
+      "This industry-wide experience allows us to deliver solutions that are practical and effective.",
+  },
+  partner: {
+    title: "A technology partner that focuses on real outcomes",
+    intro:
+      "Choosing Excellanto means working with a team that understands both technology and business operations. Our goal is not just to manage your cloud but to improve how your business performs.",
+    bullets: [
+      "Strong technical expertise in cloud and IT infrastructure",
+      "Business-focused approach to solution design",
+      "Customized strategies for every client",
+      "Scalable systems built for long-term growth",
+      "Continuous support and performance improvement",
+    ],
+  },
+  future: {
+    title: "Building a cloud environment that supports future growth",
+    intro:
+      "As businesses continue to evolve, cloud infrastructure must be able to keep up. Intelligent Cloud Management ensures that your systems are always ready for new challenges and opportunities.",
+    bullets: [
+      "Stable and high-performing",
+      "Secure and compliant",
+      "Flexible and scalable",
+      "Efficient and cost-controlled",
+      "This creates a strong foundation for innovation, expansion, and long-term growth.",
+    ],
+  },
+  cta: {
+    title: "Let's turn your social data into real business value",
+    body: "If you want to move beyond basic social media management and leverage data for smarter growth, Excellanto is ready to deliver.",
+    closingTitle:
+      "Partner with Excellanto to build intelligent, insight-driven social media strategies that drive engagement, conversions, and sustainable growth.",
+    email: "support@excellanto.com",
+    website: "https://excellanto.com",
+    tagline: "Make smarter decisions with Social Media Intelligence",
+    subtext:
+      "Work with Excellanto to unlock the full potential of your social media and turn insights into measurable business outcomes.",
+  },
+};
+
+/** Content from excellanto.com/it-strategy-innovation-consulting/ */
+export const itStrategyInnovationConsultingPage = {
+  opening: [
+    "Cloud infrastructure is the backbone of modern digital operations, but without the right control and visibility, it can quickly become complex, expensive, and difficult to manage.",
+    "At Excellanto, we deliver Intelligent Cloud Management solutions that bring clarity, control, and performance to your cloud ecosystem while supporting long-term business growth.",
+    "Our solutions are designed to help businesses move beyond basic cloud usage and build an environment that is optimized, secure, and aligned with operational goals. By combining AI-driven monitoring, automation, and cloud optimization strategies, we ensure that your infrastructure performs consistently while adapting to changing business needs.",
+    "With strong expertise in enterprise cloud environments, IT infrastructure, and automation technologies, Excellanto enables organizations to operate with confidence while making the most of their cloud investments.",
+  ],
+  chooseUs: {
+    title: "Turning technology decisions into business advantages",
+    body: "Many organizations invest in technology without a clear roadmap, which leads to inefficiencies and missed opportunities. Therefore, our focus is on bringing structure to your IT planning and helping you make decisions that create long-term value.",
+    bullets: [
+      "Align IT strategy with business goals",
+      "Identify the right technologies for growth",
+      "Eliminate inefficiencies in current systems",
+      "Plan scalable and future-ready IT architecture",
+      "Build innovation-driven operational models",
+    ],
+  },
+  infrastructure: {
+    title: "Designed around your infrastructure, not forced onto it",
+    intro:
+      "Every organization uses the cloud differently. Some operate on hybrid models, while others depend on multi-cloud platforms. Because of this, we do not apply generic solutions. Instead, we carefully understand your infrastructure and design a management system that fits your operations.",
+    evaluateLeadIn: "Our process begins with evaluating:",
+    evaluateBullets: [
+      "Your current cloud architecture",
+      "Application performance and dependencies",
+      "Cost distribution across services",
+      "Security configurations and risks",
+      "Based on this understanding, we create a tailored cloud management strategy that aligns with your business objectives and ensures long-term efficiency.",
+    ],
+    strategyParagraph:
+      "Based on this understanding, we create a tailored cloud management strategy that aligns with your business objectives and ensures long-term efficiency.",
+    capabilitiesLeadIn: "Our core capabilities include:",
+    capabilitiesBullets: [
+      "Multi-cloud and hybrid cloud environment management",
+      "Cloud infrastructure optimization",
+      "Resource allocation and cost control",
+      "Continuous performance monitoring",
+      "Security management and compliance support",
+      "Automation of cloud operations",
+    ],
+  },
+  results: {
+    title: "When cloud management is done right, results follow naturally",
+    items: [
+      {
+        title: "Clear visibility and better decision-making",
+        body: "You gain real-time insights into your infrastructure, helping you make faster and more informed decisions.",
+      },
+      {
+        title: "Controlled and optimized cloud spending",
+        body: "Resources are used efficiently, reducing unnecessary costs and improving overall budget control.",
+      },
+      {
+        title: "Consistent system performance",
+        body: "Applications and services run smoothly with minimal disruptions, ensuring reliable operations.",
+      },
+      {
+        title: "Strong data protection and system security",
+        body: "Security measures are continuously monitored and updated to protect your infrastructure.",
+      },
+      {
+        title: "Flexibility to grow without limitations",
+        body: "Your cloud environment adapts easily as your business scales, without creating operational challenges.",
+      },
+      {
+        title: "Reduced downtime and improved reliability",
+        body: "Proactive monitoring and automated responses ensure that issues are addressed before they impact your business.",
+      },
+    ],
+  },
+  cta: {
+    title: "Let's turn your social data into real business value",
+    body: "If you want to move beyond basic social media management and leverage data for smarter growth, Excellanto is ready to deliver.",
+    closingTitle:
+      "Partner with Excellanto to build intelligent, insight-driven social media strategies that drive engagement, conversions, and sustainable growth.",
+    email: "support@excellanto.com",
+    website: "https://excellanto.com",
+    tagline: "Make smarter decisions with Social Media Intelligence",
+    subtext:
+      "Work with Excellanto to unlock the full potential of your social media and turn insights into measurable business outcomes.",
+  },
+};
+
+/** Content from excellanto.com/predictive-performance-marketing/ */
+export const predictivePerformanceMarketingPage = {
+  hero: {
+    eyebrow: "Built to deliver performance, not just traffic",
+    intro:
+      "Marketing success is not defined by clicks or impressions—it is defined by conversions and revenue. Therefore, Excellanto focuses on building campaigns that are optimized for outcomes from the very beginning.",
+    bullets: [
+      "Attract high-intent users instead of low-quality traffic",
+      "Improve conversion rates across landing pages and funnels",
+      "Reduce cost per lead and cost per acquisition",
+      "Allocate budget efficiently across channels",
+      "Allocate budget efficiently across channels",
+    ],
+    result:
+      "This ensures that your marketing efforts translate into real business impact, not just activity.",
+  },
+  whyChooseUs: {
+    eyebrow: "why choose us",
+    title: "Powered by data, refined by continuous optimization",
+    body: "At Excellanto, every marketing decision is backed by data. We analyze user behavior, campaign performance, and market trends to build strategies that are precise and effective.",
+    leadIn: "Our predictive approach allows us to:",
+    bullets: [
+      "Identify which audience segments are most likely to convert",
+      "Forecast campaign performance before scaling budgets",
+      "Optimize campaigns dynamically based on real-time data",
+      "Eliminate underperforming channels and strategies",
+    ],
+    result:
+      "Because of this, your campaigns are always improving, adapting, and delivering better results over time.",
+  },
+  overview: {
+    title: "Predictive Performance Marketing",
+    paragraphs: [
+      "At Excellanto, we create predictive performance marketing systems that drive real business results through data, AI, and continuous optimization. Our focus is simple—generate qualified leads, increase conversions, and maximize ROI with strategies that are built to perform, scale, and sustain growth.",
+      "We don't run random campaigns or rely on assumptions. Instead, we build a structured, performance-focused marketing ecosystem where every campaign, audience, and budget decision is backed by data and aligned with your business goals.",
+    ],
+  },
+  conversions: {
+    eyebrow: "Marketing that focuses on conversions, not just visibility",
+    intro:
+      "Excellanto designs marketing strategies that go beyond impressions and clicks. Every campaign is structured to deliver outcomes that matter—leads, sales, and measurable business growth.",
+    leadIn: "We help businesses:",
+    bullets: [
+      "Generate high-quality, intent-driven leads",
+      "Improve conversion rates across funnels",
+      "Reduce customer acquisition costs",
+      "Increase marketing efficiency across platforms",
+      "Build consistent and scalable growth channels",
+    ],
+    result:
+      "This ensures that your marketing investment delivers clear and trackable returns.",
+  },
+  dataExecution: {
+    title: "Data-driven execution that improves performance continuously",
+    intro:
+      "At Excellanto, marketing decisions are never based on guesswork. We use advanced analytics and AI-powered insights to guide every stage of campaign execution.",
+    leadIn: "Our predictive marketing model enables:",
+    bullets: [
+      "Identification of high-converting audience segments",
+      "Forecast campaign performance before scaling budgets",
+      "Real-time optimization for better results",
+      "Elimination of underperforming strategies",
+    ],
+    result:
+      "As a result, your campaigns are constantly refined to deliver higher performance and better ROI.",
+  },
+  capabilities: {
+    eyebrow: "Key capabilities that power your marketing growth",
+    items: [
+      {
+        title: "Predictive Analytics",
+        body: "Predictive Analytics Anticipates user behavior and improves targeting accuracy",
+      },
+      {
+        title: "Audience Segmentation",
+        body: "Focuses on high-value users likely to convert",
+      },
+      {
+        title: "Campaign Optimization",
+        body: "Campaign Optimization Enhances performance through continuous improvements",
+      },
+      {
+        title: "Budget Optimization",
+        body: "Allocates spend to maximize ROI",
+      },
+      {
+        title: "Multi-Channel Execution",
+        body: "Ensures consistent performance across platforms",
+      },
+      {
+        title: "Performance Tracking",
+        body: "Provides complete visibility into campaign results",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "A clear and structured approach that ensures results",
+    title: "Structured execution that ensures consistent results",
+    intro: "Excellanto follows a clear and performance-driven approach to deliver reliable outcomes.",
+    steps: [
+      {
+        title: "Understanding your business and audience",
+        body: "We analyze your market, audience behavior, and competition to define a strong foundation.",
+      },
+      {
+        title: "Building a conversion-focused strategy",
+        body: "Campaigns are designed with a clear focus on leads, sales, and ROI.",
+      },
+      {
+        title: "Executing across the right channels",
+        body: "We run campaigns on platforms that deliver the best performance for your business.",
+      },
+      {
+        title: "Optimizing in real time",
+        body: "Continuous monitoring ensures campaigns are adjusted for better results.",
+      },
+      {
+        title: "Scaling successful campaigns",
+        body: "High-performing strategies are expanded to maximize growth.",
+      },
+    ],
+  },
+  idealFor: {
+    title: "Designed for businesses focused on growth",
+    intro: "Our Predictive Performance Marketing solutions are ideal for:",
+    bullets: [
+      "E-commerce brands",
+      "SaaS and technology companies",
+      "Service-based businesses",
+      "Startups and scaling enterprises",
+      "B2B and B2C organizations",
+      "Each strategy is tailored to your business model, ensuring maximum effectiveness.",
+    ],
+  },
+  growthEngine: {
+    title: "Turning marketing into a scalable growth engine",
+    intro:
+      "With the right strategy and execution, marketing becomes a predictable source of growth. Excellanto ensures your campaigns are:",
+    bullets: [
+      "Data-driven and performance-focused",
+      "Scalable without increasing inefficiencies",
+      "Optimized for long-term success",
+      "Aligned with business objectives",
+      "This transforms your marketing from an expense into a revenue-generating system.",
+    ],
+  },
+  impact: {
+    title: "Where predictive performance marketing creates impact",
+    intro: "Excellanto delivers measurable value across multiple marketing objectives:",
+    bullets: [
+      "Lead Generation: Attract and convert high-intent prospects",
+      "E-commerce Sales: Increase conversions and revenue",
+      "Brand Visibility: Reach relevant audiences effectively",
+      "Customer Retention: Improve engagement and repeat business",
+      "Funnel Optimization: Strengthen every stage of the customer journey",
+    ],
+  },
+  trust: {
+    title: "Why Excellanto for performance marketing",
+    intro:
+      "Excellanto combines strategy, execution, and technology to deliver marketing solutions that perform consistently.",
+    bullets: [
+      "Strong focus on ROI and measurable outcomes",
+      "AI-driven campaign optimization",
+      "Customized strategies for every business",
+      "Continuous monitoring and improvement",
+      "Expertise across industries and platforms",
+    ],
+  },
+  cta: {
+    title: "Let's turn your social data into real business value",
+    body: "If you want to move beyond basic social media management and leverage data for smarter growth, Excellanto is ready to deliver.",
+    closingTitle:
+      "Partner with Excellanto to build intelligent, insight-driven social media strategies that drive engagement, conversions, and sustainable growth.",
+    email: "support@excellanto.com",
+    website: "https://excellanto.com",
+    tagline: "Make smarter decisions with Social Media Intelligence",
+    subtext:
+      "Work with Excellanto to unlock the full potential of your social media and turn insights into measurable business outcomes.",
+  },
+};
+
 /** Content from excellanto.com/seo-cognition/ */
 export const seoCognitionPage = {
   heroTitle: "SEO Cognition",
@@ -910,7 +1507,7 @@ export const staffingRecruitmentPage = {
 };
 
 export const heroCopy = {
-  eyebrow: "Digital Transformation",
+  eyebrow: "",
   title: "AI Powered IT Solutions & Staffing",
   subtitle: "Streamlining Operations Accelerating Outcomes",
   body: "We provide advanced AI-powered IT solutions that streamline business operations, improve strategic decision-making, and deliver measurable results. Our intelligent technology platforms enable organizations to scale efficiently, strengthen security, and operate with greater speed, agility, and confidence.",

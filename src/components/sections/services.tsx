@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { SectionImage } from "@/components/ui/section-image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { cn } from "@/lib/utils";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { getServiceImage } from "@/lib/images";
 import { useCms } from "@/lib/cms/provider";
 import { getCmsIcon } from "@/lib/cms/icons";
 
@@ -18,19 +20,15 @@ export function Services() {
     <section className="section-padding bg-white" id="services">
       <div className="container-xl">
         <FadeIn>
-          <div className="mb-10 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-xl">
-              <div className="flex items-center gap-3">
-                <span className="ui-accent-bar" />
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                  {copy.eyebrow}
-                </p>
-              </div>
-              <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-secondary md:text-4xl">
-                {copy.title}
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-6 text-muted md:pb-1 md:text-right">
+          <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow={copy.eyebrow}
+              title={copy.title}
+              align="left"
+              accentBar
+              className="max-w-xl"
+            />
+            <p className="max-w-xs text-sm leading-7 text-muted md:pb-1 md:text-right">
               {copy.aside}
             </p>
           </div>
@@ -40,6 +38,10 @@ export function Services() {
           {featuredServices.map((service, index) => {
             const Icon = getCmsIcon(service.iconName);
             const featured = index === 0;
+            const cardImage = (() => {
+              const local = getServiceImage(service.slug);
+              return local.src.startsWith("/images/services/") ? local : service.image;
+            })();
             return (
               <StaggerItem
                 key={service.slug}
@@ -49,12 +51,12 @@ export function Services() {
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.25 }}
                   className={cn(
-                    "group relative flex h-full min-h-[280px] flex-col overflow-hidden border border-border bg-secondary",
+                    "group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-2xl border border-border bg-secondary shadow-soft",
                     !featured && "min-h-[320px]"
                   )}
                 >
                   <SectionImage
-                    {...service.image}
+                    {...cardImage}
                     className="absolute inset-0"
                     sizes={
                       featured
@@ -67,7 +69,7 @@ export function Services() {
                   />
 
                   <div className="relative z-10 flex flex-1 flex-col justify-end p-6 md:p-7">
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-colors group-hover:border-accent group-hover:bg-accent">
+                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-colors group-hover:border-accent group-hover:bg-accent">
                       <Icon className="h-5 w-5" />
                     </div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/55">

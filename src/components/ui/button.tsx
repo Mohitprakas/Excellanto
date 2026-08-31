@@ -14,6 +14,14 @@ const buttonVariants = cva(
           "border border-border bg-white text-secondary hover:border-slate-300 hover:bg-surface shadow-[0_1px_2px_rgb(15_23_42_/_0.04)]",
         ghost: "text-secondary hover:bg-surface hover:text-primary",
         dark: "bg-secondary text-white hover:bg-[#152033] shadow-soft",
+        "hero-primary":
+          "rounded-full border-0 bg-gradient-to-b from-[#dbeafe] to-[#7dd3fc] text-sm font-semibold text-slate-900 shadow-[0_0_32px_rgba(56,189,248,0.4)] hover:from-white hover:to-sky-200",
+        "hero-secondary":
+          "rounded-full border border-white/25 bg-white/[0.04] text-sm font-semibold text-white backdrop-blur-sm hover:bg-white/[0.08]",
+        "on-dark":
+          "border border-white/35 bg-transparent text-white hover:bg-white/10",
+        "on-primary":
+          "bg-white text-secondary hover:bg-white/90 shadow-[0_8px_24px_-8px_rgb(15_23_42_/_0.25)]",
       },
       size: {
         default: "h-11 px-5",

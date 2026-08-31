@@ -1,4 +1,5 @@
 import type { SiteImage } from "@/lib/images";
+import { serviceBannerImages } from "@/lib/images";
 import { buildSanityImageUrlOrNull } from "@/lib/sanity/image";
 
 export type CmsImageValue = {
@@ -18,6 +19,22 @@ export function resolveCmsImage(
     src,
     alt: value?.alt || fallback.alt,
   };
+}
+
+/** Always use the local service banner — CMS must not override hero/banner images. */
+export function resolveServiceBannerImage(
+  slug: string,
+  value: CmsImageValue | undefined,
+  fallback: SiteImage
+): SiteImage {
+  const local = serviceBannerImages[slug];
+  if (local) {
+    return {
+      src: local.src,
+      alt: pickText(value?.alt ?? undefined, local.alt || fallback.alt),
+    };
+  }
+  return resolveCmsImage(value, fallback);
 }
 
 const LEGACY_HERO_IMAGE_PREFIXES = ["/images/ai/", "hero-dashboard-preview"];

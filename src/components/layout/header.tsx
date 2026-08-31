@@ -61,7 +61,7 @@ export function Header() {
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",
           transparent
             ? "border-b border-white/10 bg-transparent"
-            : "border-b border-border/80 bg-white/95 shadow-[0_1px_0_rgb(15_23_42_/_0.04)] backdrop-blur-xl"
+            : "border-b border-border/80 bg-white/95 shadow-[0_4px_24px_-12px_rgb(15_23_42_/_0.08)] backdrop-blur-xl"
         )}
       >
         <div className="container-xl flex h-16 items-center justify-between md:h-[4.25rem]">
@@ -131,10 +131,8 @@ export function Header() {
               href={settings.headerCta.href}
               size="sm"
               strength={0.15}
-              className={cn(
-                transparent &&
-                  "!bg-white !text-secondary hover:!bg-white/90 shadow-none"
-              )}
+              variant={transparent ? "on-primary" : "primary"}
+              className={cn(transparent && "shadow-none")}
             >
               {settings.headerCta.label}
               <ArrowUpRight className="h-3.5 w-3.5" />

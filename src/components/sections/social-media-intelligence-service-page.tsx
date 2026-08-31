@@ -65,7 +65,7 @@ export function SocialMediaIntelligenceServicePage() {
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-55"
+            className="object-cover object-[70%_center] opacity-55 md:object-right"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#040712]/95 via-[#040712]/78 to-[#040712]/45" />

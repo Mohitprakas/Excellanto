@@ -61,7 +61,7 @@ export function SeoCognitionServicePage() {
             fill
             priority
             unoptimized
-            className="object-cover object-center opacity-50"
+            className="object-cover object-[70%_center] opacity-50 md:object-right"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#031208]/96 via-[#031208]/80 to-[#031208]/40" />

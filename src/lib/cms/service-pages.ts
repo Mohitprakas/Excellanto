@@ -1,6 +1,10 @@
-import { industries, mobileAppPage, seoCognitionPage, socialMediaIntelligencePage, staffingRecruitmentPage, websiteDevPage } from "@/lib/data";
+import { industries, mobileAppPage, aiDrivenOperationsAutomationPage, intelligentCloudManagementPage, itStrategyInnovationConsultingPage, predictivePerformanceMarketingPage, seoCognitionPage, socialMediaIntelligencePage, staffingRecruitmentPage, websiteDevPage } from "@/lib/data";
 import {
+  aiDrivenOperationsImages,
   brandLogos,
+  intelligentCloudManagementImages,
+  itStrategyInnovationImages,
+  predictivePerformanceMarketingImages,
   mobileAppImages,
   seoCognitionImages,
   socialMediaImages,
@@ -8,7 +12,7 @@ import {
   websiteDevImages,
 } from "@/lib/images";
 import { getCmsIcon } from "./icons";
-import { pickArray, pickText, resolveCmsImage, type CmsImageValue } from "./resolve";
+import { pickArray, pickText, resolveCmsImage, resolveServiceBannerImage, type CmsImageValue } from "./resolve";
 import type { CmsService } from "./types";
 
 type Raw = Record<string, unknown>;
@@ -46,7 +50,7 @@ export function getMobilePageContent(service?: CmsService | null) {
   return {
     heroTitle: pickText(raw.mobileHeroTitle as string, mobileAppPage.heroTitle),
     heroEyebrow: pickText(raw.mobileHeroEyebrow as string, service?.bannerEyebrow || "Mobile App Development"),
-    heroImage: resolveCmsImage(raw.mobileHeroImage as CmsImageValue, mobileAppImages.hero),
+    heroImage: resolveServiceBannerImage("mobile-app-development", raw.mobileHeroImage as CmsImageValue, mobileAppImages.hero),
     whyChoose: pickArray(why, mobileAppPage.whyChoose),
     processEyebrow: pickText(raw.mobileProcessEyebrow as string, mobileAppPage.processEyebrow),
     processTitle: pickText(raw.mobileProcessTitle as string, mobileAppPage.processTitle),
@@ -100,7 +104,7 @@ export function getWebsitePageContent(service?: CmsService | null) {
   return {
     heroTitle: pickText(raw.websiteHeroTitle as string, websiteDevPage.heroTitle),
     heroEyebrow: pickText(raw.websiteHeroEyebrow as string, service?.bannerEyebrow || "Website Development"),
-    heroImage: resolveCmsImage(raw.websiteHeroImage as CmsImageValue, websiteDevImages.hero),
+    heroImage: resolveServiceBannerImage("website-development", raw.websiteHeroImage as CmsImageValue, websiteDevImages.hero),
     offeringsTitle: pickText(raw.websiteOfferingsTitle as string, websiteDevPage.offeringsTitle),
     offerings: pickArray(offerings, offerings),
     whyChooseTitle: pickText(raw.websiteWhyTitle as string, websiteDevPage.whyChooseTitle),
@@ -148,7 +152,7 @@ export function getSocialMediaPageContent(service?: CmsService | null) {
   return {
     heroTitle: pickText(raw.socialHeroTitle as string, page.heroTitle),
     heroEyebrow: pickText(raw.socialHeroEyebrow as string, service?.bannerEyebrow || "Services"),
-    heroImage: resolveCmsImage(raw.socialHeroImage as CmsImageValue, socialMediaImages.hero),
+    heroImage: resolveServiceBannerImage("social-media-intelligence", raw.socialHeroImage as CmsImageValue, socialMediaImages.hero),
     intro: pickArray(raw.socialIntro as string[], [...page.intro]),
     chooseUs: {
       eyebrow: pickText(raw.socialChooseEyebrow as string, page.chooseUs.eyebrow),
@@ -227,7 +231,7 @@ export function getSeoCognitionPageContent(service?: CmsService | null) {
   return {
     heroTitle: pickText(raw.seoHeroTitle as string, page.heroTitle),
     heroEyebrow: pickText(raw.seoHeroEyebrow as string, service?.bannerEyebrow || "Services"),
-    heroImage: resolveCmsImage(raw.seoHeroImage as CmsImageValue, seoCognitionImages.hero),
+    heroImage: resolveServiceBannerImage("seo-cognition", raw.seoHeroImage as CmsImageValue, seoCognitionImages.hero),
     intro: pickArray(raw.seoIntro as string[], [...page.intro]),
     approach: {
       eyebrow: pickText(raw.seoApproachEyebrow as string, page.approach.eyebrow),
@@ -295,7 +299,7 @@ export function getStaffingRecruitmentPageContent(service?: CmsService | null) {
   return {
     heroTitle: pickText(raw.staffHeroTitle as string, page.heroTitle),
     heroEyebrow: pickText(raw.staffHeroEyebrow as string, service?.bannerEyebrow || "Talent Solutions"),
-    heroImage: resolveCmsImage(raw.staffHeroImage as CmsImageValue, staffingRecruitmentImages.hero),
+    heroImage: resolveServiceBannerImage("staffing-recruitment-service", raw.staffHeroImage as CmsImageValue, staffingRecruitmentImages.hero),
     intro: pickArray(raw.staffIntro as string[], [...page.intro]),
     principles,
     approach: {
@@ -338,6 +342,340 @@ export function getStaffingRecruitmentPageContent(service?: CmsService | null) {
       tagline: pickText(raw.staffCtaTagline as string, page.cta.tagline),
       subtext: pickText(raw.staffCtaSubtext as string, page.cta.subtext),
       buttonLabel: pickText(raw.staffCtaButtonLabel as string, page.cta.buttonLabel),
+    },
+  };
+}
+
+export function getAiDrivenOperationsPageContent(service?: CmsService | null) {
+  const page = aiDrivenOperationsAutomationPage;
+  const raw = (service?.aiDrivenOperations ?? {}) as Raw;
+
+  const capabilityItems = Array.isArray(raw.aiOpsCapabilityItems)
+    ? (raw.aiOpsCapabilityItems as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.capabilities.items[i]?.title ?? ""),
+        body: pickText(item.body, page.capabilities.items[i]?.body ?? ""),
+      }))
+    : page.capabilities.items;
+
+  const processSteps = Array.isArray(raw.aiOpsProcessSteps)
+    ? (raw.aiOpsProcessSteps as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.process.steps[i]?.title ?? ""),
+        body: pickText(item.body, page.process.steps[i]?.body ?? ""),
+      }))
+    : page.process.steps;
+
+  const impactItems = Array.isArray(raw.aiOpsImpactItems)
+    ? (raw.aiOpsImpactItems as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.impactAreas.items[i]?.title ?? ""),
+        body: pickText(item.body, page.impactAreas.items[i]?.body ?? ""),
+      }))
+    : page.impactAreas.items;
+
+  return {
+    heroEyebrow: pickText(raw.aiOpsHeroEyebrow as string, page.heroEyebrow),
+    heroTitle: pickText(raw.aiOpsHeroTitle as string, page.heroTitle),
+    intro: pickText(raw.aiOpsIntro as string, page.intro),
+    heroBullets: pickArray(raw.aiOpsHeroBullets as string[], [...page.heroBullets]),
+    heroImage: resolveServiceBannerImage("ai-driven-operations-automation", raw.aiOpsHeroImage as CmsImageValue, aiDrivenOperationsImages.hero),
+    heroAccentImage: resolveCmsImage(raw.aiOpsHeroAccentImage as CmsImageValue, aiDrivenOperationsImages.heroAccent),
+    experience: {
+      title: pickText(raw.aiOpsExperienceTitle as string, page.experience.title),
+      intro: pickText(raw.aiOpsExperienceIntro as string, page.experience.intro),
+      understandLeadIn: pickText(raw.aiOpsUnderstandLeadIn as string, page.experience.understandLeadIn),
+      understandBullets: pickArray(raw.aiOpsUnderstandBullets as string[], [...page.experience.understandBullets]),
+      expertiseLeadIn: pickText(raw.aiOpsExpertiseLeadIn as string, page.experience.expertiseLeadIn),
+      expertiseBullets: pickArray(raw.aiOpsExpertiseBullets as string[], [...page.experience.expertiseBullets]),
+      image: resolveCmsImage(raw.aiOpsExperienceImage as CmsImageValue, aiDrivenOperationsImages.experience),
+    },
+    capabilities: {
+      eyebrow: pickText(raw.aiOpsCapabilitiesEyebrow as string, page.capabilities.eyebrow),
+      title: pickText(raw.aiOpsCapabilitiesTitle as string, page.capabilities.title),
+      intro: pickText(raw.aiOpsCapabilitiesIntro as string, page.capabilities.intro),
+      items: pickArray(capabilityItems, capabilityItems),
+      image: resolveCmsImage(raw.aiOpsCapabilitiesImage as CmsImageValue, aiDrivenOperationsImages.capabilities),
+    },
+    process: {
+      eyebrow: pickText(raw.aiOpsProcessEyebrow as string, page.process.eyebrow),
+      steps: pickArray(processSteps, processSteps),
+      image: resolveCmsImage(raw.aiOpsProcessImage as CmsImageValue, aiDrivenOperationsImages.process),
+    },
+    industries: {
+      title: pickText(raw.aiOpsIndustriesTitle as string, page.industries.title),
+      intro: pickText(raw.aiOpsIndustriesIntro as string, page.industries.intro),
+      bullets: pickArray(raw.aiOpsIndustriesBullets as string[], [...page.industries.bullets]),
+      image: resolveCmsImage(raw.aiOpsIndustriesImage as CmsImageValue, aiDrivenOperationsImages.industries),
+    },
+    trust: {
+      title: pickText(raw.aiOpsTrustTitle as string, page.trust.title),
+      intro: pickText(raw.aiOpsTrustIntro as string, page.trust.intro),
+      bullets: pickArray(raw.aiOpsTrustBullets as string[], [...page.trust.bullets]),
+    },
+    impactAreas: {
+      eyebrow: pickText(raw.aiOpsImpactEyebrow as string, page.impactAreas.eyebrow),
+      items: pickArray(impactItems, impactItems),
+      image: resolveCmsImage(raw.aiOpsImpactImage as CmsImageValue, aiDrivenOperationsImages.impact),
+    },
+    future: {
+      title: pickText(raw.aiOpsFutureTitle as string, page.future.title),
+      intro: pickText(raw.aiOpsFutureIntro as string, page.future.intro),
+      leadIn: pickText(raw.aiOpsFutureLeadIn as string, page.future.leadIn),
+      bullets: pickArray(raw.aiOpsFutureBullets as string[], [...page.future.bullets]),
+      image: resolveCmsImage(raw.aiOpsFutureImage as CmsImageValue, aiDrivenOperationsImages.future),
+    },
+    cta: {
+      title: pickText(raw.aiOpsCtaTitle as string, page.cta.title),
+      body: pickText(raw.aiOpsCtaBody as string, page.cta.body),
+      closingTitle: pickText(raw.aiOpsCtaClosingTitle as string, page.cta.closingTitle),
+      email: pickText(raw.aiOpsCtaEmail as string, page.cta.email),
+      website: pickText(raw.aiOpsCtaWebsite as string, page.cta.website),
+      tagline: pickText(raw.aiOpsCtaTagline as string, page.cta.tagline),
+      subtext: pickText(raw.aiOpsCtaSubtext as string, page.cta.subtext),
+    },
+  };
+}
+
+export function getIntelligentCloudManagementPageContent(service?: CmsService | null) {
+  const page = intelligentCloudManagementPage;
+  const raw = (service?.intelligentCloudManagement ?? {}) as Raw;
+
+  const resultItems = Array.isArray(raw.cloudResultItems)
+    ? (raw.cloudResultItems as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.results.items[i]?.title ?? ""),
+        body: pickText(item.body, page.results.items[i]?.body ?? ""),
+      }))
+    : page.results.items;
+
+  const processSteps = Array.isArray(raw.cloudProcessSteps)
+    ? (raw.cloudProcessSteps as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.process.steps[i]?.title ?? ""),
+        body: pickText(item.body, page.process.steps[i]?.body ?? ""),
+      }))
+    : page.process.steps;
+
+  return {
+    opening: pickArray(raw.cloudOpening as string[], [...page.opening]),
+    heroImage: resolveServiceBannerImage("intelligent-cloud-management", raw.cloudHeroImage as CmsImageValue, intelligentCloudManagementImages.hero),
+    heroAccentImage: resolveCmsImage(
+      raw.cloudHeroAccentImage as CmsImageValue,
+      intelligentCloudManagementImages.heroAccent
+    ),
+    chooseUs: {
+      eyebrow: pickText(raw.cloudChooseEyebrow as string, page.chooseUs.eyebrow),
+      title: pickText(raw.cloudChooseTitle as string, page.chooseUs.title),
+      body: pickText(raw.cloudChooseBody as string, page.chooseUs.body),
+      bullets: pickArray(raw.cloudChooseBullets as string[], [...page.chooseUs.bullets]),
+    },
+    infrastructure: {
+      title: pickText(raw.cloudInfraTitle as string, page.infrastructure.title),
+      intro: pickText(raw.cloudInfraIntro as string, page.infrastructure.intro),
+      evaluateLeadIn: pickText(raw.cloudEvaluateLeadIn as string, page.infrastructure.evaluateLeadIn),
+      evaluateBullets: pickArray(raw.cloudEvaluateBullets as string[], [...page.infrastructure.evaluateBullets]),
+      strategyParagraph: pickText(raw.cloudStrategyParagraph as string, page.infrastructure.strategyParagraph),
+      capabilitiesLeadIn: pickText(raw.cloudCapabilitiesLeadIn as string, page.infrastructure.capabilitiesLeadIn),
+      capabilitiesBullets: pickArray(raw.cloudCapabilitiesBullets as string[], [...page.infrastructure.capabilitiesBullets]),
+      image: resolveCmsImage(raw.cloudInfraImage as CmsImageValue, intelligentCloudManagementImages.infrastructure),
+    },
+    results: {
+      title: pickText(raw.cloudResultsTitle as string, page.results.title),
+      items: pickArray(resultItems, resultItems),
+      image: resolveCmsImage(raw.cloudResultsImage as CmsImageValue, intelligentCloudManagementImages.results),
+    },
+    businessFunctions: {
+      eyebrow: pickText(raw.cloudFunctionsEyebrow as string, page.businessFunctions.eyebrow),
+      title: pickText(raw.cloudFunctionsTitle as string, page.businessFunctions.title),
+      intro: pickText(raw.cloudFunctionsIntro as string, page.businessFunctions.intro),
+      bullets: pickArray(raw.cloudFunctionsBullets as string[], [...page.businessFunctions.bullets]),
+      discoverMore: pickText(raw.cloudDiscoverMore as string, page.businessFunctions.discoverMore),
+      image: resolveCmsImage(raw.cloudFunctionsImage as CmsImageValue, intelligentCloudManagementImages.businessFunctions),
+    },
+    process: {
+      eyebrow: pickText(raw.cloudProcessEyebrow as string, page.process.eyebrow),
+      steps: pickArray(processSteps, processSteps),
+      image: resolveCmsImage(raw.cloudProcessImage as CmsImageValue, intelligentCloudManagementImages.process),
+    },
+    industries: {
+      title: pickText(raw.cloudIndustriesTitle as string, page.industries.title),
+      intro: pickText(raw.cloudIndustriesIntro as string, page.industries.intro),
+      serveLeadIn: pickText(raw.cloudServeLeadIn as string, page.industries.serveLeadIn),
+      bullets: pickArray(raw.cloudIndustriesBullets as string[], [...page.industries.bullets]),
+      closing: pickText(raw.cloudIndustriesClosing as string, page.industries.closing),
+      image: resolveCmsImage(raw.cloudIndustriesImage as CmsImageValue, intelligentCloudManagementImages.industries),
+    },
+    partner: {
+      title: pickText(raw.cloudPartnerTitle as string, page.partner.title),
+      intro: pickText(raw.cloudPartnerIntro as string, page.partner.intro),
+      bullets: pickArray(raw.cloudPartnerBullets as string[], [...page.partner.bullets]),
+    },
+    future: {
+      title: pickText(raw.cloudFutureTitle as string, page.future.title),
+      intro: pickText(raw.cloudFutureIntro as string, page.future.intro),
+      bullets: pickArray(raw.cloudFutureBullets as string[], [...page.future.bullets]),
+    },
+    cta: {
+      title: pickText(raw.cloudCtaTitle as string, page.cta.title),
+      body: pickText(raw.cloudCtaBody as string, page.cta.body),
+      closingTitle: pickText(raw.cloudCtaClosingTitle as string, page.cta.closingTitle),
+      email: pickText(raw.cloudCtaEmail as string, page.cta.email),
+      website: pickText(raw.cloudCtaWebsite as string, page.cta.website),
+      tagline: pickText(raw.cloudCtaTagline as string, page.cta.tagline),
+      subtext: pickText(raw.cloudCtaSubtext as string, page.cta.subtext),
+    },
+  };
+}
+
+export function getItStrategyInnovationPageContent(service?: CmsService | null) {
+  const page = itStrategyInnovationConsultingPage;
+  const raw = (service?.itStrategyInnovation ?? {}) as Raw;
+
+  const resultItems = Array.isArray(raw.itStrategyResultItems)
+    ? (raw.itStrategyResultItems as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.results.items[i]?.title ?? ""),
+        body: pickText(item.body, page.results.items[i]?.body ?? ""),
+      }))
+    : page.results.items;
+
+  return {
+    opening: pickArray(raw.itStrategyOpening as string[], [...page.opening]),
+    heroImage: resolveServiceBannerImage("it-strategy-innovation-consulting", raw.itStrategyHeroImage as CmsImageValue, itStrategyInnovationImages.hero),
+    heroAccentImage: resolveCmsImage(
+      raw.itStrategyHeroAccentImage as CmsImageValue,
+      itStrategyInnovationImages.heroAccent
+    ),
+    chooseUs: {
+      title: pickText(raw.itStrategyChooseTitle as string, page.chooseUs.title),
+      body: pickText(raw.itStrategyChooseBody as string, page.chooseUs.body),
+      bullets: pickArray(raw.itStrategyChooseBullets as string[], [...page.chooseUs.bullets]),
+    },
+    infrastructure: {
+      title: pickText(raw.itStrategyInfraTitle as string, page.infrastructure.title),
+      intro: pickText(raw.itStrategyInfraIntro as string, page.infrastructure.intro),
+      evaluateLeadIn: pickText(raw.itStrategyEvaluateLeadIn as string, page.infrastructure.evaluateLeadIn),
+      evaluateBullets: pickArray(raw.itStrategyEvaluateBullets as string[], [...page.infrastructure.evaluateBullets]),
+      strategyParagraph: pickText(raw.itStrategyStrategyParagraph as string, page.infrastructure.strategyParagraph),
+      capabilitiesLeadIn: pickText(raw.itStrategyCapabilitiesLeadIn as string, page.infrastructure.capabilitiesLeadIn),
+      capabilitiesBullets: pickArray(raw.itStrategyCapabilitiesBullets as string[], [...page.infrastructure.capabilitiesBullets]),
+      image: resolveCmsImage(raw.itStrategyInfraImage as CmsImageValue, itStrategyInnovationImages.infrastructure),
+    },
+    results: {
+      title: pickText(raw.itStrategyResultsTitle as string, page.results.title),
+      items: pickArray(resultItems, resultItems),
+      image: resolveCmsImage(raw.itStrategyResultsImage as CmsImageValue, itStrategyInnovationImages.results),
+    },
+    cta: {
+      title: pickText(raw.itStrategyCtaTitle as string, page.cta.title),
+      body: pickText(raw.itStrategyCtaBody as string, page.cta.body),
+      closingTitle: pickText(raw.itStrategyCtaClosingTitle as string, page.cta.closingTitle),
+      email: pickText(raw.itStrategyCtaEmail as string, page.cta.email),
+      website: pickText(raw.itStrategyCtaWebsite as string, page.cta.website),
+      tagline: pickText(raw.itStrategyCtaTagline as string, page.cta.tagline),
+      subtext: pickText(raw.itStrategyCtaSubtext as string, page.cta.subtext),
+    },
+  };
+}
+
+export function getPredictivePerformanceMarketingPageContent(service?: CmsService | null) {
+  const page = predictivePerformanceMarketingPage;
+  const raw = (service?.predictivePerformanceMarketing ?? {}) as Raw;
+
+  const capabilityItems = Array.isArray(raw.ppmCapabilityItems)
+    ? (raw.ppmCapabilityItems as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.capabilities.items[i]?.title ?? ""),
+        body: pickText(item.body, page.capabilities.items[i]?.body ?? ""),
+      }))
+    : page.capabilities.items;
+
+  const processSteps = Array.isArray(raw.ppmProcessSteps)
+    ? (raw.ppmProcessSteps as { title?: string; body?: string }[]).map((item, i) => ({
+        title: pickText(item.title, page.process.steps[i]?.title ?? ""),
+        body: pickText(item.body, page.process.steps[i]?.body ?? ""),
+      }))
+    : page.process.steps;
+
+  return {
+    hero: {
+      eyebrow: pickText(raw.ppmHeroEyebrow as string, page.hero.eyebrow),
+      intro: pickText(raw.ppmHeroIntro as string, page.hero.intro),
+      bullets: pickArray(raw.ppmHeroBullets as string[], [...page.hero.bullets]),
+      result: pickText(raw.ppmHeroResult as string, page.hero.result),
+      image: resolveServiceBannerImage(
+        "predictive-performance-marketing",
+        raw.ppmHeroImage as CmsImageValue,
+        predictivePerformanceMarketingImages.hero
+      ),
+      accentImage: resolveCmsImage(raw.ppmHeroAccentImage as CmsImageValue, predictivePerformanceMarketingImages.heroAccent),
+    },
+    whyChooseUs: {
+      eyebrow: pickText(raw.ppmWhyEyebrow as string, page.whyChooseUs.eyebrow),
+      title: pickText(raw.ppmWhyTitle as string, page.whyChooseUs.title),
+      body: pickText(raw.ppmWhyBody as string, page.whyChooseUs.body),
+      leadIn: pickText(raw.ppmWhyLeadIn as string, page.whyChooseUs.leadIn),
+      bullets: pickArray(raw.ppmWhyBullets as string[], [...page.whyChooseUs.bullets]),
+      result: pickText(raw.ppmWhyResult as string, page.whyChooseUs.result),
+      image: resolveCmsImage(raw.ppmWhyImage as CmsImageValue, predictivePerformanceMarketingImages.whyChooseUs),
+    },
+    overview: {
+      title: pickText(raw.ppmOverviewTitle as string, page.overview.title),
+      paragraphs: pickArray(raw.ppmOverviewParagraphs as string[], [...page.overview.paragraphs]),
+      image: resolveCmsImage(raw.ppmOverviewImage as CmsImageValue, predictivePerformanceMarketingImages.overview),
+    },
+    conversions: {
+      eyebrow: pickText(raw.ppmConversionsEyebrow as string, page.conversions.eyebrow),
+      intro: pickText(raw.ppmConversionsIntro as string, page.conversions.intro),
+      leadIn: pickText(raw.ppmConversionsLeadIn as string, page.conversions.leadIn),
+      bullets: pickArray(raw.ppmConversionsBullets as string[], [...page.conversions.bullets]),
+      result: pickText(raw.ppmConversionsResult as string, page.conversions.result),
+      image: resolveCmsImage(raw.ppmConversionsImage as CmsImageValue, predictivePerformanceMarketingImages.conversions),
+    },
+    dataExecution: {
+      title: pickText(raw.ppmDataTitle as string, page.dataExecution.title),
+      intro: pickText(raw.ppmDataIntro as string, page.dataExecution.intro),
+      leadIn: pickText(raw.ppmDataLeadIn as string, page.dataExecution.leadIn),
+      bullets: pickArray(raw.ppmDataBullets as string[], [...page.dataExecution.bullets]),
+      result: pickText(raw.ppmDataResult as string, page.dataExecution.result),
+      image: resolveCmsImage(raw.ppmDataImage as CmsImageValue, predictivePerformanceMarketingImages.dataExecution),
+    },
+    capabilities: {
+      eyebrow: pickText(raw.ppmCapabilitiesEyebrow as string, page.capabilities.eyebrow),
+      items: pickArray(capabilityItems, capabilityItems),
+      image: resolveCmsImage(raw.ppmCapabilitiesImage as CmsImageValue, predictivePerformanceMarketingImages.capabilities),
+    },
+    process: {
+      eyebrow: pickText(raw.ppmProcessEyebrow as string, page.process.eyebrow),
+      title: pickText(raw.ppmProcessTitle as string, page.process.title),
+      intro: pickText(raw.ppmProcessIntro as string, page.process.intro),
+      steps: pickArray(processSteps, processSteps),
+      image: resolveCmsImage(raw.ppmProcessImage as CmsImageValue, predictivePerformanceMarketingImages.process),
+    },
+    idealFor: {
+      title: pickText(raw.ppmIdealTitle as string, page.idealFor.title),
+      intro: pickText(raw.ppmIdealIntro as string, page.idealFor.intro),
+      bullets: pickArray(raw.ppmIdealBullets as string[], [...page.idealFor.bullets]),
+      image: resolveCmsImage(raw.ppmIdealImage as CmsImageValue, predictivePerformanceMarketingImages.idealFor),
+    },
+    growthEngine: {
+      title: pickText(raw.ppmGrowthTitle as string, page.growthEngine.title),
+      intro: pickText(raw.ppmGrowthIntro as string, page.growthEngine.intro),
+      bullets: pickArray(raw.ppmGrowthBullets as string[], [...page.growthEngine.bullets]),
+    },
+    impact: {
+      title: pickText(raw.ppmImpactTitle as string, page.impact.title),
+      intro: pickText(raw.ppmImpactIntro as string, page.impact.intro),
+      bullets: pickArray(raw.ppmImpactBullets as string[], [...page.impact.bullets]),
+      image: resolveCmsImage(raw.ppmImpactImage as CmsImageValue, predictivePerformanceMarketingImages.impact),
+    },
+    trust: {
+      title: pickText(raw.ppmTrustTitle as string, page.trust.title),
+      intro: pickText(raw.ppmTrustIntro as string, page.trust.intro),
+      bullets: pickArray(raw.ppmTrustBullets as string[], [...page.trust.bullets]),
+    },
+    cta: {
+      title: pickText(raw.ppmCtaTitle as string, page.cta.title),
+      body: pickText(raw.ppmCtaBody as string, page.cta.body),
+      closingTitle: pickText(raw.ppmCtaClosingTitle as string, page.cta.closingTitle),
+      email: pickText(raw.ppmCtaEmail as string, page.cta.email),
+      website: pickText(raw.ppmCtaWebsite as string, page.cta.website),
+      tagline: pickText(raw.ppmCtaTagline as string, page.cta.tagline),
+      subtext: pickText(raw.ppmCtaSubtext as string, page.cta.subtext),
     },
   };
 }

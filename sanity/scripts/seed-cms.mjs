@@ -349,7 +349,7 @@ const services = [
     ],
     detailIntro:
       "Turning everyday operations into intelligent, automated systems. Traditional automation focuses only on repetitive tasks, but modern businesses require much more than that. Our AI-driven approach ensures that your operations are not only automated but also capable of learning, adapting, and improving over time.",
-    image: img(wp("2026/03/futuristic-time-machine-1.jpg"), "AI-Driven Operations Automation"),
+    image: img("/images/services/ai-driven-operations-automation.png", "AI-Driven Operations Automation"),
   },
   {
     slug: "intelligent-cloud-management",
@@ -372,10 +372,7 @@ const services = [
     ],
     detailIntro:
       "Bringing structure and control to complex cloud environments. At Excellanto, we deliver Intelligent Cloud Management solutions that bring clarity, control, and performance to your cloud ecosystem while supporting long-term business growth.",
-    image: img(
-      wp("2026/03/woman-interacting-with-futuristic-holographic-interface-1.jpg"),
-      "Intelligent Cloud Management"
-    ),
+    image: img("/images/services/intelligent-cloud-management.png", "Intelligent Cloud Management"),
   },
   {
     slug: "smart-home-automation-powered-by-ai-llm-home-assistant",
@@ -416,7 +413,7 @@ const services = [
     ],
     detailIntro:
       "Turning technology decisions into business advantages. Partner with Excellanto experts to design strategic IT roadmaps and innovation-driven transformation initiatives.",
-    image: img(wp("2026/03/57830.jpg"), "IT Strategy & Innovation Consulting"),
+    image: img("/images/services/it-strategy-innovation-consulting.jpg", "IT Strategy & Innovation Consulting"),
   },
   {
     slug: "predictive-performance-marketing",
@@ -439,7 +436,7 @@ const services = [
     ],
     detailIntro:
       "Marketing that focuses on conversions, not just visibility. Run high-impact marketing campaigns powered by predictive analytics and AI-driven optimization.",
-    image: img(wp("2024/05/ch1-img-1.webp"), "Predictive Performance Marketing"),
+    image: img("/images/services/predictive-performance-marketing.jpeg", "Predictive Performance Marketing"),
   },
   {
     slug: "social-media-intelligence",
@@ -460,7 +457,7 @@ const services = [
     ],
     detailIntro:
       "Social media platforms are constantly generating valuable data. Excellanto applies AI-driven analytics, behavioral tracking, and predictive insights to convert this data into strategies that improve engagement, optimize campaigns, and accelerate business outcomes.",
-    image: img(wp("2026/03/apps-workplace-social-media-holding-profession.jpg"), "Social Media Intelligence"),
+    image: img("/images/services/social-media-intelligence.jpg", "Social Media Intelligence"),
   },
   {
     slug: "seo-cognition",
@@ -481,12 +478,7 @@ const services = [
     ],
     detailIntro:
       "Our expert SEO team works as an extension of your business—analyzing, optimizing, and refining every element of your website to ensure it performs effectively across search engines.",
-    image: img(
-      wp(
-        "2026/03/gHTQKKoosjK5crf_RyXzH7yvSAB6XUsz2SmGn_RECriO-kAXpt1tMtJjc2qUKIyDmRlY-tq2tqx7emdSCucueyMuPyQHPy-reIgiD6u-GZhJrgYEx15hZOgaPW5NwwFaPM2mJgtv0X2XC-U50ZZ_J-amINUAK3XZGmUBcBh4JgENz0Um80YH5w9MhCWEt7VJ.jpg"
-      ),
-      "SEO Cognition"
-    ),
+    image: img("/images/services/seo-cognition.jpeg", "SEO Cognition"),
   },
   {
     slug: "staffing-recruitment-service",
@@ -771,7 +763,7 @@ export default async function seed() {
     {
       _id: "homepage",
       _type: "homepage",
-      heroEyebrow: "Digital Transformation",
+      heroEyebrow: "",
       heroTitle: "AI Powered IT Solutions &",
       heroHighlight: "Staffing",
       heroSubtitle: "Streamlining Operations Accelerating Outcomes",
@@ -866,12 +858,15 @@ export default async function seed() {
       brandsEyebrow: "Brands",
       brandsTitle: "We Build Modern Experience with Brands",
       brandsBackground: img(wp("2024/05/c4-phone.webp"), "We build modern experience with brands"),
-      brandLogos: [1, 2, 3, 4, 5, 6].map((n) => ({
-        _type: "siteImage",
-        _key: `br${n}`,
-        url: wp(`2024/05/c4-br-${n}.webp`),
-        alt: "Brand partner",
-      })),
+      brandLogos: Array.from({ length: 31 }, (_, index) => {
+        const id = String(index + 1).padStart(2, "0");
+        return {
+          _type: "siteImage",
+          _key: `br${id}`,
+          url: `/images/brands/2026/${id}.png`,
+          alt: `Brand partner ${index + 1}`,
+        };
+      }),
       whyEyebrow: "why choose us",
       whyTitle: "We Want to Work The Best!",
       whyBody:

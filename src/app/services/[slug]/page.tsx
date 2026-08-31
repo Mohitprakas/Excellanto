@@ -8,6 +8,10 @@ import { SectionImage } from "@/components/ui/section-image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { CTA } from "@/components/sections/cta";
 import { FadeIn } from "@/components/animations/fade-in";
+import { ItStrategyInnovationConsultingServicePage } from "@/components/sections/it-strategy-innovation-consulting-service-page";
+import { PredictivePerformanceMarketingServicePage } from "@/components/sections/predictive-performance-marketing-service-page";
+import { IntelligentCloudManagementServicePage } from "@/components/sections/intelligent-cloud-management-service-page";
+import { AiDrivenOperationsAutomationServicePage } from "@/components/sections/ai-driven-operations-automation-service-page";
 import { MobileAppServicePage } from "@/components/sections/mobile-app-service-page";
 import { SeoCognitionServicePage } from "@/components/sections/seo-cognition-service-page";
 import { SocialMediaIntelligenceServicePage } from "@/components/sections/social-media-intelligence-service-page";
@@ -59,6 +63,22 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   if (slug === "staffing-recruitment-service") {
     return <StaffingRecruitmentServicePage />;
+  }
+
+  if (slug === "ai-driven-operations-automation") {
+    return <AiDrivenOperationsAutomationServicePage />;
+  }
+
+  if (slug === "intelligent-cloud-management") {
+    return <IntelligentCloudManagementServicePage />;
+  }
+
+  if (slug === "it-strategy-innovation-consulting") {
+    return <ItStrategyInnovationConsultingServicePage />;
+  }
+
+  if (slug === "predictive-performance-marketing") {
+    return <PredictivePerformanceMarketingServicePage />;
   }
 
   const Icon = getCmsIcon(service.iconName);
