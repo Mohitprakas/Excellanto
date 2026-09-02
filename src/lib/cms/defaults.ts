@@ -75,6 +75,8 @@ export const defaultSettings: CmsSettings = {
   primaryNavAria: "Primary",
   mobileNavAria: "Mobile",
   seoAuthor: "Excellanto Ventures",
+  seoTitle: `${siteConfig.name} | AI-Powered IT Solutions & Staffing`,
+  seoDescription: siteConfig.description,
   seoKeywords: [
     "AI Web & Mobile Solutions",
     "Digital Marketing",
@@ -231,6 +233,9 @@ export const defaultAbout: CmsAbout = {
   eyebrow: aboutContent.eyebrow,
   title: aboutContent.title,
   intro: aboutContent.intro,
+  seoTitle: "About Us | AI-Powered IT Solutions Company",
+  seoDescription:
+    "Learn about Excellanto — our mission, vision, values, and strengths in AI-powered IT solutions, digital marketing, and staffing services.",
   heroImage: sectionImages.aboutHero,
   mission: aboutContent.mission,
   vision: aboutContent.vision,
@@ -249,6 +254,9 @@ export const defaultAbout: CmsAbout = {
 export const defaultContact: CmsContact = {
   eyebrow: "Contact Us",
   title: "Get AI Automation Solutions for Your Business",
+  seoTitle: "Contact Us | Get AI Automation Solutions",
+  seoDescription:
+    "Contact Excellanto for AI-powered IT solutions, digital marketing, and staffing. Call +91 96677 97078 or email support@excellanto.com.",
   heroImage: sectionImages.contactHero,
   officeImage: sectionImages.contactOffice,
   infoEyebrow: "Contact Info",
@@ -272,6 +280,9 @@ export const defaultContact: CmsContact = {
 export const defaultServicesPage: CmsServicesPage = {
   eyebrow: "Services",
   title: "Delivering reliable solutions tailored to your business needs",
+  seoTitle: "IT & Digital Marketing Services",
+  seoDescription:
+    "Explore Excellanto services: mobile app development, website development, AI automation, cloud management, SEO, social media intelligence, and staffing.",
   heroImage: sectionImages.servicesHero,
   viewMore: "Want to see our professional Services. Click here to View More",
   categoryEyebrow: "Services",
@@ -282,6 +293,9 @@ export const defaultServicesPage: CmsServicesPage = {
 export const defaultBlogPage: CmsBlogPage = {
   eyebrow: "Our Blog",
   title: "Latest News & Articles From the Blog",
+  seoTitle: "Blog | IT, AI & Digital Marketing Insights",
+  seoDescription:
+    "Read the latest articles from Excellanto on AI, IT solutions, SEO, digital marketing, and technology trends for modern businesses.",
   heroImage: sectionImages.blogHero,
   emptyMessage: "No blog articles are available right now. Please check back soon.",
   readMoreLabel: "Read more",

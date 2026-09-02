@@ -51,6 +51,10 @@ export function Header() {
 
   const { settings, services, categories } = useCms();
   const navLinks = settings.navLinks;
+  const mobileNavOrder = ["/", "/about", "/services", "/contact", "/blog"] as const;
+  const mobileNavLinks = mobileNavOrder
+    .map((href) => navLinks.find((link) => link.href === href))
+    .filter((link): link is (typeof navLinks)[number] => Boolean(link));
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
 
@@ -64,8 +68,16 @@ export function Header() {
             : "border-b border-border/80 bg-white/95 shadow-[0_4px_24px_-12px_rgb(15_23_42_/_0.08)] backdrop-blur-xl"
         )}
       >
-        <div className="container-xl flex h-16 items-center justify-between md:h-[4.25rem]">
-          <Logo dark={!transparent} height={34} priority src={settings.logo?.src} alt={settings.logo?.alt} ariaLabel={settings.logoAriaLabel} />
+        <div className="container-xl flex h-16 w-full min-w-0 items-center justify-between gap-3 md:h-[4.25rem]">
+          <Logo
+            className="shrink-0"
+            dark={!transparent}
+            height={34}
+            priority
+            src={settings.logo?.src}
+            alt={settings.logo?.alt}
+            ariaLabel={settings.logoAriaLabel}
+          />
 
           <nav className="hidden items-center gap-0.5 lg:flex" aria-label={settings.primaryNavAria}>
             {navLinks.map((link) => {
@@ -142,16 +154,16 @@ export function Header() {
           <button
             type="button"
             className={cn(
-              "inline-flex h-10 w-10 items-center justify-center rounded-xl border lg:hidden",
+              "relative z-10 ml-auto inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border lg:hidden",
               transparent
-                ? "border-white/25 bg-white/10 text-white"
-                : "border-border bg-white text-secondary"
+                ? "border-white/30 bg-white/15 text-white shadow-[0_0_0_1px_rgb(255_255_255_/_0.08)]"
+                : "border-border bg-white text-secondary shadow-soft"
             )}
             onClick={() => setOpen(true)}
             aria-label={settings.openMenu}
             aria-expanded={open}
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-5 w-5 stroke-[2.25]" aria-hidden />
           </button>
         </div>
       </header>
@@ -201,8 +213,8 @@ export function Header() {
                 </button>
               </div>
 
-              <div className="container-xl flex flex-1 flex-col gap-1 pb-16 pt-4">
-                {navLinks.map((link, i) => {
+              <div className="container-xl flex flex-1 flex-col gap-0.5 pb-12 pt-2">
+                {mobileNavLinks.map((link, i) => {
                   if ("mega" in link && link.mega) {
                     return (
                       <motion.div
@@ -214,7 +226,7 @@ export function Header() {
                         <button
                           type="button"
                           className={cn(
-                            "font-display flex w-full items-center justify-between py-3 text-left text-3xl font-extrabold tracking-tight transition-colors sm:text-4xl",
+                            "font-display flex w-full items-center justify-between py-2 text-left text-[1.375rem] font-bold leading-snug tracking-tight transition-colors sm:text-2xl",
                             servicesActive || mobileServicesOpen
                               ? "text-accent"
                               : "text-white/90"
@@ -225,7 +237,7 @@ export function Header() {
                           {link.label}
                           <ChevronDown
                             className={cn(
-                              "h-6 w-6 transition-transform",
+                              "h-5 w-5 shrink-0 transition-transform",
                               mobileServicesOpen && "rotate-180"
                             )}
                           />
@@ -240,13 +252,13 @@ export function Header() {
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
                             >
-                              <div className="mb-4 space-y-5 rounded-3xl border border-white/10 bg-white/5 p-4">
+                              <div className="mb-3 space-y-3.5 rounded-2xl border border-white/10 bg-white/5 p-3">
                                 {categories.map((category) => (
                                   <div key={category.id}>
-                                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                                    <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">
                                       {category.title}
                                     </p>
-                                    <ul className="space-y-1">
+                                    <ul className="space-y-0.5">
                                       {services
                                         .filter((service) => service.category === category.id)
                                         .map((service) => {
@@ -255,10 +267,10 @@ export function Header() {
                                             <li key={service.slug}>
                                               <Link
                                                 href={`/services/${service.slug}`}
-                                                className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-bold text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+                                                className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-[0.8125rem] font-semibold leading-snug text-white/85 transition-colors hover:bg-white/10 hover:text-white"
                                                 onClick={() => setOpen(false)}
                                               >
-                                                <Icon className="h-4 w-4 shrink-0 text-accent" />
+                                                <Icon className="h-3.5 w-3.5 shrink-0 text-accent" />
                                                 {service.shortTitle}
                                               </Link>
                                             </li>
@@ -269,11 +281,11 @@ export function Header() {
                                 ))}
                                 <Link
                                   href="/services"
-                                  className="inline-flex items-center gap-1.5 pt-1 text-sm font-bold text-accent"
+                                  className="inline-flex items-center gap-1.5 pt-0.5 text-[0.8125rem] font-semibold text-accent"
                                   onClick={() => setOpen(false)}
                                 >
                                   {settings.viewAllServices}
-                                  <ArrowUpRight className="h-4 w-4" />
+                                  <ArrowUpRight className="h-3.5 w-3.5" />
                                 </Link>
                               </div>
                             </motion.div>
@@ -292,7 +304,7 @@ export function Header() {
                     >
                       <Link
                         href={link.href}
-                        className="font-display block py-3 text-3xl font-extrabold tracking-tight text-white/90 transition-colors hover:text-accent sm:text-4xl"
+                        className="font-display block py-2 text-[1.375rem] font-bold leading-snug tracking-tight text-white/90 transition-colors hover:text-accent sm:text-2xl"
                         onClick={() => setOpen(false)}
                       >
                         {link.label}
@@ -302,14 +314,14 @@ export function Header() {
                 })}
 
                 <motion.div
-                  className="mt-8"
+                  className="mt-6"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <MagneticButton href={settings.headerCta.href} size="lg">
+                  <MagneticButton href={settings.headerCta.href} size="default">
                     {settings.headerCta.label}
-                    <ArrowUpRight className="h-5 w-5" />
+                    <ArrowUpRight className="h-4 w-4" />
                   </MagneticButton>
                 </motion.div>
               </div>

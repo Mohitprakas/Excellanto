@@ -28,6 +28,7 @@ function mapBlogListItem(post: SanityBlogListItem, imageWidth = 1200): BlogPost 
     title: post.title,
     excerpt: post.excerpt,
     date: formatPublishedDate(post.publishedDate),
+    publishedAt: post.publishedDate,
     category: post.category ?? "Blog",
     author: post.author ?? undefined,
     tags: post.tags ?? undefined,

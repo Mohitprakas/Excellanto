@@ -47,9 +47,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
+  overflow-x: clip;
+  max-width: 100%;
   background: var(--background);
   color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
@@ -290,10 +293,18 @@ body {
 
 .brand-marquee-track {
   animation: brand-marquee 50s linear infinite;
+  will-change: transform;
 }
 
 .brand-marquee-track-reverse {
   animation: brand-marquee-reverse 55s linear infinite;
+  will-change: transform;
+}
+
+.brand-marquee-viewport {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .brand-marquee-track:hover,

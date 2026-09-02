@@ -270,7 +270,7 @@ export function PredictivePerformanceMarketingServicePage() {
               <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
                 <div>
                   <AccentBar className="mb-6" />
-                  <DisplayTitle as="h1" size="lg">
+                  <DisplayTitle as="h2" size="lg">
                     {page.overview.title}
                   </DisplayTitle>
                 </div>

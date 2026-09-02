@@ -8,15 +8,19 @@ import { CTA } from "@/components/sections/cta";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
 import { PageHero } from "@/components/ui/page-hero";
 import { getCmsIcon } from "@/lib/cms/icons";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { PageBreadcrumbSchema } from "@/components/seo/page-schemas";
 
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getServicesPage();
-  return {
-    title: page.seoTitle || page.eyebrow,
+  return buildPageMetadata({
+    title: page.seoTitle || page.title,
     description: page.seoDescription || page.title,
-  };
+    path: "/services",
+    image: page.heroImage,
+  });
 }
 
 export default async function ServicesPage() {
@@ -24,6 +28,12 @@ export default async function ServicesPage() {
 
   return (
     <>
+      <PageBreadcrumbSchema
+        items={[
+          { name: "Home", path: "/" },
+          { name: page.title, path: "/services" },
+        ]}
+      />
       <PageHero
         variant="banner"
         eyebrow={page.eyebrow}

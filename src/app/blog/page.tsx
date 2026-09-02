@@ -6,15 +6,19 @@ import { BlogEmptyState } from "@/components/blog/blog-empty-state";
 import { PageHero } from "@/components/ui/page-hero";
 import { CTA } from "@/components/sections/cta";
 import { FadeIn, Stagger, StaggerItem } from "@/components/animations/fade-in";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { PageBreadcrumbSchema } from "@/components/seo/page-schemas";
 
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getBlogPage();
-  return {
-    title: page.seoTitle || page.eyebrow,
+  return buildPageMetadata({
+    title: page.seoTitle || page.title,
     description: page.seoDescription || page.title,
-  };
+    path: "/blog",
+    image: page.heroImage,
+  });
 }
 
 export default async function BlogPage() {
@@ -23,6 +27,12 @@ export default async function BlogPage() {
 
   return (
     <>
+      <PageBreadcrumbSchema
+        items={[
+          { name: "Home", path: "/" },
+          { name: page.title, path: "/blog" },
+        ]}
+      />
       <PageHero eyebrow={page.eyebrow} title={page.title} image={page.heroImage} />
 
       <section className="section-padding bg-surface">

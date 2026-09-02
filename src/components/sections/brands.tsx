@@ -41,7 +41,7 @@ function MarqueeRow({
   return (
     <div
       className={cn(
-        "overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]",
+        "brand-marquee-viewport [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]",
         className
       )}
     >

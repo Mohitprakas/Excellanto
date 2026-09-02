@@ -5,16 +5,19 @@ import { FadeIn } from "@/components/animations/fade-in";
 import { BlogPortableText } from "@/components/blog/portable-text";
 import { getLegalPage } from "@/lib/cms/content";
 import type { PortableTextBlock } from "@portabletext/react";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { PageBreadcrumbSchema } from "@/components/seo/page-schemas";
 
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getLegalPage("privacy-policy");
   if (!page) return { title: "Privacy Policy" };
-  return {
+  return buildPageMetadata({
     title: page.seoTitle || page.title,
     description: page.seoDescription || page.description,
-  };
+    path: "/privacy-policy",
+  });
 }
 
 export default async function PrivacyPolicyPage() {
@@ -23,6 +26,12 @@ export default async function PrivacyPolicyPage() {
 
   return (
     <>
+      <PageBreadcrumbSchema
+        items={[
+          { name: "Home", path: "/" },
+          { name: page.title, path: "/privacy-policy" },
+        ]}
+      />
       <PageHero
         eyebrow={page.eyebrow}
         title={page.title}

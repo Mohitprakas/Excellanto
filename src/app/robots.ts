@@ -1,11 +1,16 @@
 import type { MetadataRoute } from "next";
+import { getSiteSettings } from "@/lib/cms/content";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const settings = await getSiteSettings();
+  const base = settings.url.replace(/\/$/, "");
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/industries"],
     },
-    sitemap: "https://excellanto.com/sitemap.xml",
+    sitemap: `${base}/sitemap.xml`,
   };
 }

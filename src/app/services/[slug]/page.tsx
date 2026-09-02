@@ -18,6 +18,10 @@ import { SocialMediaIntelligenceServicePage } from "@/components/sections/social
 import { StaffingRecruitmentServicePage } from "@/components/sections/staffing-recruitment-service-page";
 import { WebsiteDevServicePage } from "@/components/sections/website-dev-service-page";
 import { getCmsIcon } from "@/lib/cms/icons";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { ServicePageSchemas } from "@/components/seo/page-schemas";
+import type { CmsService } from "@/lib/cms/types";
+import type { ReactNode } from "react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -34,10 +38,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const [service, settings] = await Promise.all([getService(slug), getSiteSettings()]);
   if (!service) return { title: settings.serviceEyebrow };
-  return {
+  return buildPageMetadata({
     title: service.seoTitle || service.title,
     description: service.seoDescription || service.description,
-  };
+    path: `/services/${service.slug}`,
+    image: service.image,
+  });
+}
+
+function ServicePageShell({ service, children }: { service: CmsService; children: ReactNode }) {
+  return (
+    <>
+      <ServicePageSchemas service={service} />
+      {children}
+    </>
+  );
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -46,45 +61,81 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   if (slug === "mobile-app-development") {
-    return <MobileAppServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <MobileAppServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "website-development") {
-    return <WebsiteDevServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <WebsiteDevServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "social-media-intelligence") {
-    return <SocialMediaIntelligenceServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <SocialMediaIntelligenceServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "seo-cognition") {
-    return <SeoCognitionServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <SeoCognitionServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "staffing-recruitment-service") {
-    return <StaffingRecruitmentServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <StaffingRecruitmentServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "ai-driven-operations-automation") {
-    return <AiDrivenOperationsAutomationServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <AiDrivenOperationsAutomationServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "intelligent-cloud-management") {
-    return <IntelligentCloudManagementServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <IntelligentCloudManagementServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "it-strategy-innovation-consulting") {
-    return <ItStrategyInnovationConsultingServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <ItStrategyInnovationConsultingServicePage />
+      </ServicePageShell>
+    );
   }
 
   if (slug === "predictive-performance-marketing") {
-    return <PredictivePerformanceMarketingServicePage />;
+    return (
+      <ServicePageShell service={service}>
+        <PredictivePerformanceMarketingServicePage />
+      </ServicePageShell>
+    );
   }
 
   const Icon = getCmsIcon(service.iconName);
 
   return (
-    <>
+    <ServicePageShell service={service}>
       <PageHero
         variant="banner"
         eyebrow={service.bannerEyebrow}
@@ -149,6 +200,6 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       <CTA />
-    </>
+    </ServicePageShell>
   );
 }
